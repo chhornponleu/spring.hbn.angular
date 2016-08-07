@@ -1,0 +1,36 @@
+{
+  "name": "app",
+  "description": "Big Application",
+  "main": "index.html",
+  "authors": [
+    "ponleu.chhorn"
+  ],
+  "license": "MIT",
+  "homepage": "www.ponleuchhorn.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "AdminLTE": "admin-lte#^2.3.5",
+    "angular-loading-bar": "^0.9.0",
+    "angular-file-upload": "^2.3.4",
+    "angular-bootstrap": "^2.0.0",
+    "angular-sanitize": "^1.5.8",
+    "angular-ui-grid": "angular-grid#^3.2.1",
+    "angular-ui-router": "^0.3.1",
+    "angular-route": "^1.5.8",
+    "angular-ui": "^0.4.0",
+    "angular-resource": "^1.5.8",
+    "angular-ui-select": "^0.18.1",
+    "jquery": "2.1.0",
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "requirejs": "^2.2.0",
+    "font-awesome": "fontawesome#^4.6.3",
+    "Ionicons": "ionicons#^2.0.1"
+  }
+}

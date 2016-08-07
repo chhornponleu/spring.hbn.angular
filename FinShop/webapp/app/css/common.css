@@ -1,0 +1,5 @@
+.main-header .logo {border-right:none !important;}
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header { height: 185px; }
+.navbar-custom-menu.pull-left>.navbar-nav>li>.dropdown-menu {position: absolute;right: 0;left: 0;}
+.navbar-custom-menu  li a {border: none !important;}
+.dropdown:hover > ul.dropdown-menu {display: block;}
