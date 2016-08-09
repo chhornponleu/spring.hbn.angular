@@ -1,5 +1,4 @@
 <%@include file="taglibs.jsp" %>
-
 <!DOCTYPE html>
 <html ng-controller="MainController">
 	<head>
@@ -13,6 +12,7 @@
 		<link rel="stylesheet" href="${baseUrl}app/bower_components/Ionicons/css/ionicons.min.css">
 		<link rel="stylesheet" href="${baseUrl}app/bower_components/AdminLTE/dist/css/AdminLTE.min.css">
 		<link rel="stylesheet" href="${baseUrl}app/bower_components/AdminLTE/dist/css/skins/skin-black-light.min.css">
+		<link rel="stylesheet" href="${baseUrl}app/bower_components/select2/select2.css">
 		
 		<link rel="stylesheet" href="${baseUrl}app/css/common.css">
 		
@@ -75,12 +75,17 @@
 			<aside class="main-sidebar">
 				<section class="sidebar">
 					<ul class="sidebar-menu">
-						<li class="header">MAIN NAVIGATION</li>
 						<li class="treeview">
-							<a href="#!/"> 
-								<i class="fa fa-dashboard"></i> 
-								<span>Dashboard</span> 
-							</a>
+							<a href="#!/"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
+						</li>
+						<li class="treeview">
+							<a href="#!/products"><i class="fa fa-list"></i><span>Product</span></a>
+						</li>
+						<li class="treeview">
+							<a href="#!/orders"><i class="fa fa-get-pocket"></i><span>Order</span></a>
+						</li>
+						<li class="treeview">
+							<a href="#!/user"><i class="fa fa-user-md"></i><span>Profile</span></a>
 						</li>
 					</ul>
 				</section>

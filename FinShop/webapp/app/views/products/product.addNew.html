@@ -1,0 +1,63 @@
+<div class="container-dash" ng-controller="NewProductController">
+	<section class="content-header">
+	  	<h4>New Product</h4>
+	</section>
+	<section class="content">
+		<form name="frmNewProduct" name="frmNewProduct" novalidate="novalidate">
+			<div class="box box-info">
+				<div class="box-header">
+					<h3 class="box-title">Product Info</h3>
+				</div>
+				<div class="box-body">
+					<div class="form-group">
+						<label for="productName">Product Name: </label> 
+						<input name="productName" id="productName" required="required" type="text" class="form-control" placeholder="Product name">
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="categoryId"> Category
+									<a ng-click="events.addCategory()" class="btn btn-xs btn-link" href="javascript:void(0);" class="pull-right"> 
+										<i class="fa fa-plus"></i>
+									</a> 
+								</label> 
+								<select name="categoryId" required="required" class="form-control select2">
+									<option value="">Empty</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for=""> Attributes
+									<a ng-click="events.addAttribute()" class="btn btn-xs btn-link" href="javascript:void(0);" class="pull-right"> 
+										<i class="fa fa-plus"></i>
+									</a>
+								</label>
+								<select id="attributes" name="attributes" class="form-control input-sm" required="required" multiple="multiple" style="width: 100%;">
+									<!-- <option value="test">Empty</option> -->
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="productDescription">Product Description </label> 
+								<textarea name="productDescription" id="productDescription" rows="3" class="form-control" placeholder="Product Description"></textarea>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="productName">Product Image: </label> 
+								<input name="productName" ng-model="image" input-img-preview="preview-image" accept="image/*" required="required" type="file" class="form-control">
+							</div>
+							<div class="form-group" style="max-width:200px;max-height:200px;">
+								<img id="preview-image" src="" class="img-responsive">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-footer">
+					<button type="submit" class="btn btn-success">
+						<small><i class="fa fa-save"></i></small> 	Save 
+					</button>
+				</div>
+			</div>
+			
+		</form>
+	</section>
+</div>

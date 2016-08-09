@@ -27,7 +27,7 @@
 	<body class="skin-black login-page">
 		<div class="login-box">
 			<div class="login-logo">
-				<a href="#"><b>Shop </b>Commerce</a>
+				<a href="#"><b>Fin </b>Soft</a>
 			</div>
 			<!-- /.login-logo -->
 			<div class="login-box-body">
@@ -44,18 +44,20 @@
 			      	<div class="form-group">
 						<label class="control-label visible-ie8 visible-ie9">Username</label>
 						<div class="input-icon">
-							<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" autofocus="autofocus" required="required"/> 
+							<input class="form-control input-lg" type="text" autocomplete="off" placeholder="Username" name="username" autofocus="autofocus" required="required"/> 
 						</div>
 			      	</div>
 			      	<div class="form-group">
 						<label class="control-label visible-ie8 visible-ie9">Password</label>
 			         	<div class="input-icon">
-			 				<input class="form-control" type="password" autocomplete="off" 
+			 				<input class="form-control input-lg" type="password" autocomplete="off" 
 			 					placeholder="Password" name="password" required="required"/> 
 						</div>
 			   		</div>
 			   		<div class="form-actions">
-					    <button type="submit" class="btn btn-success btn-flat btn-block btn-login"><i class="fa fa-lock"></i> Login </button>
+					    <button type="submit" class="btn btn-success btn-lg btn-block btn-login">
+					    	<i class="fa fa-lock"></i> Login 
+					    </button>
 					</div>
 				</form>
 			</div>

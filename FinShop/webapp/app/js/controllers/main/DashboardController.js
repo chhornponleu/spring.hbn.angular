@@ -6,7 +6,7 @@ app.controllers = $.extend(module, {
 	}
 });
 
-app.ng.application.controller('DashboardController', ['$scope', '$rootScope', app.controllers.WelcomeController]).run(function () {
+app.ng.application.controller('DashboardController', ['$scope', '$rootScope', app.controllers.DashboardController]).run(function () {
 	console.info('DashboardController controller has been initialized');
 });
 

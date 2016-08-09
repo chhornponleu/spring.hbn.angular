@@ -1,7 +1,5 @@
 (function(app) {
 	var defineHeaders = function($httpProvider) {
-		var mainLink = getLocation(window.location.href);
-		var baseApiUrl = 'http://localhost:8080/restServer';
 		
 		// Enable CORS! (see e.g. http://enable-cors.org/)
         //$httpProvider.defaults.useXDomain = true;

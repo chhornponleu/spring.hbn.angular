@@ -3,3 +3,7 @@
 .navbar-custom-menu.pull-left>.navbar-nav>li>.dropdown-menu {position: absolute;right: 0;left: 0;}
 .navbar-custom-menu  li a {border: none !important;}
 .dropdown:hover > ul.dropdown-menu {display: block;}
+
+/** Themes custimization **/
+.login-box-body, .register-box-body {padding:48px;border-radius: 15px;}
+.btn-app {margin: 0;}

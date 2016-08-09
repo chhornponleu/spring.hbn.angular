@@ -13,6 +13,30 @@
                 	console.log('login....');
                 }
             })
+            
+            // Orders
+            .when('/orders', {
+            	templateUrl : 'app/views/orders/order.list.html'
+            })
+            
+            
+            // Products
+            .when('/products', {
+            	templateUrl : 'app/views/products/product.list.html'
+            })
+            .when('/products/addNew', {
+            	templateUrl : 'app/views/products/product.addNew.html'
+            })
+            
+            .when('/carts', {
+            	templateUrl : 'app/views/carts.html'
+            })
+            
+            .when('/checkout', {
+            	templateUrl : 'app/views/checkout.html'
+            })
+            
+            // Others
             .when('/404', {
             	templateUrl : 'app/views/404.html'
             })

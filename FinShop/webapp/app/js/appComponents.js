@@ -1,31 +1,35 @@
 define([ 'jquery', 'app' ], function() {
 	var components = {
 		services : [
-
+		     'RestServiceProvider'
 		],
 		controllers : [
 		    'main/MainController',
 		    'main/LoginController',
-		    'main/DashboardController'
+		    'main/DashboardController',
+		    
+		    'orders/OrderListController',
+		    
+		    'products/ProductListController',
+		    'products/NewProductController',
+		    
+		    'categories/NewCategoryPopupController'
 	    ],
 	    filters : [],
-	    directives : []
+	    directives : [
+	        'inputImgPreview'
+	    ]
 	};
 	
 	return function () {
 		var def = $.Deferred();
 		
-		var deps = [
-		    'routes',
-		    'appInitializer'
-		];
+		var deps = ['routes','appInitializer'];
 		
 		$.each(components, function (pkg, items) {
-			
 			$.each(items, function (index, path) {
 				deps.push(pkg + '/' + path);
 			})
-			
 		});
 		
 		require(deps, function () {

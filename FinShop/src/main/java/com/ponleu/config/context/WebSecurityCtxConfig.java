@@ -72,6 +72,7 @@ public class WebSecurityCtxConfig extends WebSecurityConfigurerAdapter {
 				.deleteCookies(this.env.getProperty("security.cookie.name"))
 				//;
 			.and()
+			.csrf().disable()
 			.sessionManagement()
 				.sessionFixation().newSession()
 				.invalidSessionUrl(INVALID_SESSION_URL)

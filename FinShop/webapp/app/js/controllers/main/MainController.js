@@ -1,8 +1,7 @@
 (function(module) {
 
 app.controllers = $.extend(module, {
-	WelcomeController : function (scope, rootScope) {
-		console.log(localStorage);
+	MainController : function (scope, rootScope) { 
 		
 		scope.collapsed = false;
 		scope.toggleSidebarCollapsed = function () {
@@ -11,12 +10,10 @@ app.controllers = $.extend(module, {
 		}
 		
 		
-		
-		
 	}
 });
 
-app.ng.application.controller('MainController', ['$scope', '$rootScope', app.controllers.WelcomeController]).run(function () {
+app.ng.application.controller('MainController', ['$scope', '$rootScope', app.controllers.MainController]).run(function () {
 	console.info('Welcome controller has been initialized');
 });
 
