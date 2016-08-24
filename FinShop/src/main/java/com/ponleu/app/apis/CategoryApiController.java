@@ -20,7 +20,17 @@ public class CategoryApiController {
 	@Inject
 	private CategoryService categoryService;
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.GET)
+	public RestfulResponse getAll() {
+		RestfulResponse resp = new RestfulResponse();
+		RestfulResponseHeader header = new RestfulResponseHeader();
+		resp.setHeader(header);
+		resp.setBody(categoryService.getAll());
+		return resp;
+		
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
 	public RestfulResponse save(@RequestBody Category category) {
 		RestfulResponse resp = new RestfulResponse();
 		RestfulResponseHeader header = new RestfulResponseHeader();
@@ -31,7 +41,7 @@ public class CategoryApiController {
 		
 	}
 	
-	@RequestMapping(value = "/existsName/{categoryName}", method = RequestMethod.GET)
+	@RequestMapping(value = "/hasName/{categoryName}", method = RequestMethod.GET)
 	public RestfulResponse existCategoryName(@PathVariable("categoryName") String categoryName) {
 		RestfulResponse resp = new RestfulResponse();
 		RestfulResponseHeader header = new RestfulResponseHeader();

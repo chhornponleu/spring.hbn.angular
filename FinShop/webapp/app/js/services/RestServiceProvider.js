@@ -7,16 +7,34 @@
 
 				var baseUrl = '/FinShop/apis'
 				var defineResource = function (url, paramDefaults, actions) {
-	                return resource(baseUrl + url, paramDefaults, actions);
+	                return resource(baseUrl + url, paramDefaults, 
+                		angular.extend({ query : { method : 'GET', isArray:false}}, actions) 
+	                );
 	            };
 	            return {
-	                products: defineResource('/products/:productId', {productId: '@productId'}, {
+	                products: defineResource('/products/:productId', {productId: '@id'}, {
 	                    getPaging: {method: 'POST', url : baseUrl+'/products/paging'}
 	                }),
-	                attribuites : defineResource('/attributes/:attributeId', {productId: '@attributeId'}, {
+	                attributes : defineResource('/attributes/:attributeId', {attributeId: '@id'}, {
+	                	hasName : {
+                			method : 'GET', 
+                			url : baseUrl+'/attributes/hasName/:attributeName', 
+                			params : {attributeName : '@attributeName'}
+            			}
 	                }),
-                	categories : defineResource('/attributes/:categoryId', {productId: '@categoryId'}, {
+                	categories : defineResource('/categories/:categoryId', {categoryId: '@id'}, {
+                		hasName : {
+                			method : 'GET', 
+                			url : baseUrl+'/categories/hasName/:categoryName', 
+                			params : {categoryName : '@categoryName'}
+            			}
 	                }),
+	                customers : defineResource('/customers/:customerId', {categoryId: '@id'}, {
+                		
+	                }),
+                	orders : defineResource('/orders/:orderId', {orderId: '@id'}, {
+                		
+	                })
 	            }
 			}];
 			

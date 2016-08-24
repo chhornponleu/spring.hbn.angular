@@ -1,9 +1,79 @@
-.main-header .logo {border-right:none !important;}
-.navbar-nav>.user-menu>.dropdown-menu>li.user-header { height: 185px; }
-.navbar-custom-menu.pull-left>.navbar-nav>li>.dropdown-menu {position: absolute;right: 0;left: 0;}
-.navbar-custom-menu  li a {border: none !important;}
-.dropdown:hover > ul.dropdown-menu {display: block;}
+.main-header .logo {
+	border-right: none !important;
+}
+
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header {
+	height: 185px;
+}
+
+.navbar-custom-menu.pull-left>.navbar-nav>li>.dropdown-menu {
+	position: absolute;
+	right: 0;
+	left: 0;
+}
+
+.navbar-custom-menu  li a {
+	border: none !important;
+}
+
+.dropdown:hover>ul.dropdown-menu {
+	display: block;
+}
 
 /** Themes custimization **/
-.login-box-body, .register-box-body {padding:48px;border-radius: 15px;}
-.btn-app {margin: 0;}
+.login-box-body, .register-box-body {
+	padding: 28px;
+	border-radius: 15px;
+}
+
+.btn-app {
+	margin: 0;
+}
+
+.select-box {
+	background: #fff;
+	position: relative;
+	z-index: 1;
+}
+
+.btn-close-dialog {
+	background: #000000;
+	position: absolute;
+	right: -9px;
+	top: -27px;
+	padding: 0 4px;
+	color: #fff;
+	opacity: 1;
+}
+
+/** Product List **/
+.product-list {
+	margin-bottom: 15px;
+	padding: 10px;
+	background-color: #fff;
+	border-radius: 3px;
+}
+
+.product-image:before {
+	content: " ";
+}
+
+.product-image {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.product-category {
+	position: absolute;
+	top: 2px;
+	left: 20px;
+}
+
+.product-name {
+	max-height: 44px;
+	overflow: hidden;
+}
+/** Angular form **/
+.ng-submitted .ng-invalid {
+	border-color: red;
+}

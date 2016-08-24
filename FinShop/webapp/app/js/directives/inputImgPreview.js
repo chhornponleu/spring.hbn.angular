@@ -1,11 +1,10 @@
 (function(module) {
 
 	app.directives = $.extend(module, {
-		inputImgPreview : function ($rootScope) { 
+		inputImgPreview : function ($rootScope, $parse) { 
 			return {
 				restrict : 'A',
-				link : function (scope, el, attr) {
-					//console.log(arguments);
+				link : function (scope, el, attr, model) {
 					el.bind('change', function (e) {
 						var reader = new FileReader();
 			            reader.onload = onLoad;
@@ -19,6 +18,15 @@
 						}
 						var img = document.getElementById(imgId);
 						img.src = e.target.result;
+						
+						if(attr.ngModel) {
+							$parse(attr.ngModel).assign(scope, el.val())
+						}
+						
+						if(attr.ngModelData) {
+							$parse(attr.ngModelData).assign(scope, e.target.result);
+						}
+						
 					}
 					function onError() {
 						
@@ -28,7 +36,7 @@
 		}
 	});
 	
-	app.ng.application.directive('inputImgPreview', ['$rootScope', app.directives.inputImgPreview]).run(function ($log) {
+	app.ng.application.directive('inputImgPreview', ['$rootScope', '$parse', app.directives.inputImgPreview]).run(function ($log) {
 		$log.info('input-img-preview has been initialized');
 	});
 

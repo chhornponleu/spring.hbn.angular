@@ -25,7 +25,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @EnableCaching
@@ -46,17 +47,17 @@ public class DataSourceConfig {
 	@Bean
 	public DataSource dataSource() throws PropertyVetoException, JsonParseException, JsonMappingException, IOException {
 		LOGGER.debug("Initializing database connection....");
-		ComboPooledDataSource dataSource = new ComboPooledDataSource();
-		dataSource.setDriverClass(this.env.getProperty("datasource.jdbc.driverClassName"));
-		dataSource.setJdbcUrl(this.env.getProperty("datasource.jdbc.url"));
-		dataSource.setMinPoolSize(Integer.parseInt(this.env.getProperty("datasource.jdbc.minPoolSize")));
-		dataSource.setMaxPoolSize(Integer.parseInt(this.env.getProperty("datasource.jdbc.maxPoolSize")));
-		dataSource.setInitialPoolSize(Integer.parseInt(this.env.getProperty("datasource.jdbc.initialPoolSize")));
-		dataSource.setMaxIdleTime(Integer.parseInt(this.env.getProperty("datasource.jdbc.maxIdleTime")));
-		dataSource.setMaxConnectionAge(Integer.parseInt(this.env.getProperty("datasource.jdbc.maxConnectionAge")));
-		dataSource.setPassword("12345");
-		dataSource.setUser("root");
-		return dataSource;
+		
+		HikariConfig config = new HikariConfig();
+		config.setJdbcUrl(this.env.getProperty("datasource.jdbc.url"));
+		config.setDriverClassName(this.env.getProperty("datasource.jdbc.driverClassName"));
+		config.setUsername("root");
+		config.setPassword("12345");
+		config.addDataSourceProperty("cachePrepStmts", "true");
+		config.addDataSourceProperty("prepStmtCacheSize", "250");
+		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+		
+		return new HikariDataSource(config);
 	}
 
 	@Bean
@@ -107,13 +108,10 @@ public class DataSourceConfig {
 		properties.put("hibernate.dialect", this.env.getProperty("datasource.hibernate.dialect"));
 		properties.put("hibernate.show_sql", this.env.getProperty("datasource.hibernate.show_sql"));
 		properties.put("hibernate.format_sql", this.env.getProperty("datasource.hibernate.format_sql"));
-		properties.put("hibernate.cache.use_second_level_cache",
-				this.env.getProperty("datasource.hibernate.second_level_cache"));
+		properties.put("hibernate.cache.use_second_level_cache", this.env.getProperty("datasource.hibernate.second_level_cache"));
 		properties.put("hibernate.cache.use_query_cache", this.env.getProperty("datasource.hibernate.use_query_cache"));
-		properties.put("hibernate.cache.region.factory_class",
-				this.env.getProperty("datasource.hibernate.factory_class"));
-		properties.put("hibernate.generate_statistics",
-				this.env.getProperty("datasource.hibernate.generate_statistics"));
+		properties.put("hibernate.cache.region.factory_class", this.env.getProperty("datasource.hibernate.factory_class"));
+		properties.put("hibernate.generate_statistics", this.env.getProperty("datasource.hibernate.generate_statistics"));
 		properties.put("hibernate.connection.characterEncoding", "UTF-8");
 		properties.put("hibernate.connection.charSet", "UTF-8");
 		//properties.put("hibernate.hbm2ddl.auto", "validate");

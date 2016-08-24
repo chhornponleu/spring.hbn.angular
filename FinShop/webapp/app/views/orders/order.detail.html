@@ -1,0 +1,47 @@
+<div class="container-dash" ng-controller="OrderDetailController">
+	<section class="content-header">Order Checkout</section>
+
+	<section class="content">
+		<div class="box box-info">
+			<div class="box-body">
+				<div class="row">
+					<div class="col-xs-12">
+						{{order.customer.customerName}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Product Image</th>
+									<th>Product Name</th>
+									<th>Items</th>
+									<th>Qty</th>
+									<th>Unit Price</th>
+									<th>Total</th>
+								</tr>
+							</thead>
+							<tbody ng-repeat="od in order.orderDetails">
+								<tr>
+									<td rowspan="{{od.attributes.length + 1}}">{{$index + 1}}</td>
+									<td rowspan="{{od.attributes.length + 1}}">
+										<img ng-src="images/products/{{od.imageName}}" style="max-width:100px;" class="img-responsive" />
+									</td>
+									<td rowspan="{{od.attributes.length + 1}}">{{od.productName}}</td>
+								</tr>
+								<tr ng-repeat="attr in od.attributes">
+									<td>{{attr.id.attribute.attributeName}}</td>
+									<td>{{attr.quantity | number}}</td>
+									<td>{{attr.unitPrice | number}} $</td>
+									<td>{{attr.quantity * attr.unitPrice | number}} $</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

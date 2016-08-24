@@ -58,7 +58,7 @@ public class WebMvcCtxConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler(env.getProperty("mvc.resource.mapping"))
-				.addResourceLocations(env.getProperty("mvc.resource.location"));
+				.addResourceLocations(env.getProperty("mvc.resource.location")).setCachePeriod(0);
 		
 		registry.addResourceHandler(env.getProperty("mvc.resource.products.mapping"))
 				.addResourceLocations("file:" + env.getProperty("mvc.resource.products.location"));

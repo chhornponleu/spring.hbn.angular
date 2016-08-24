@@ -1,46 +1,39 @@
 <div class="container-dash" ng-controller="ProductListController">
-	<section class="content-header">
+	<div class="box no-border">
+		<div class="box-header with-border">
+			<form class="form-horizontal">	
+				<div class="col-md-4">
+					<div class="input-group">
+		                <input ng-model="data.search" type="text" class="form-control" ng-change="events.reloadProduct()">
+	                    <span class="input-group-btn">
+	                      <button type="button" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
+	                    </span>
+              		</div>
+              	</div>
+             		<div class="col-md-4">
+             			<a href="#!products/addNew" class="btn btn-info">
+						<i class="fa fa-plus"></i>
+					</a>
+             		</div>
+			</form>
+		</div>
+	</div>
+	<!-- <section class="content-header">
 	  	<h4>Product List</h4>
-	</section>
+	</section> -->
 
 	<section class="content">
-		<div class="box box-info">
-			<div class="box-header with-border">
-				<form class="form-horizontal">	
-					<div class="col-md-4">
-						<div class="input-group">
-			                <input ng-model="data.search" type="text" class="form-control">
-		                    <span class="input-group-btn">
-		                      <button type="button" class="btn btn-info btn-flat">Go!</button>
-		                    </span>
-	              		</div>
-	              	</div>
-              		<div class="col-md-4">
-              			<a href="#!products/addNew" class="btn btn-info">
-							<i class="fa fa-plus"></i>  Add Product
-						</a>
-              		</div>
-				</form>
-			</div>
-			<div class="">
-			
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-3"  ng-repeat="pro in data.products">
-				<div class="product-list">
-					<img src="images/products/1470008621691.jpg" class="info-box-icon bg-aqua img-responsive">
-
-					<div class="info-box-content">
-						<div class="product-header"><strong>{{pro.productName}}</strong></div>
-						<p class="product-description">
-							{{pro.productDescription}}
-						</p>
-						<span class="info-box-number">
-							<span class="badge bg-red">{{pro.category.categoryName}}</span>
-						</span>
-					</div>
+		<div class="col-xs-3"  ng-repeat="pro in data.products">
+			<div class="product-list" ng-click="events.viewProductDetail(pro)">
+				<div class="product-image">
+					<img ng-src="images/products/{{pro.imageName}}" class="img-responsive">
 				</div>
+				<div class="product-detail">
+					<div class="product-name"><strong>({{pro.id}})-{{pro.productName}}</strong></div>
+				</div>
+				<span class="product-category">
+					<span class="badge bg-red">{{pro.category.categoryName}}</span>
+				</span>
 			</div>
 		</div>
 		<div class="row">

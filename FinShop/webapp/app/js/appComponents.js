@@ -1,19 +1,26 @@
 define([ 'jquery', 'app' ], function() {
 	var components = {
 		services : [
-		     'RestServiceProvider'
+		     'RestServiceProvider',
+		     'MyCartService'
 		],
 		controllers : [
-		    'main/MainController',
+		    'main/RootController',
 		    'main/LoginController',
 		    'main/DashboardController',
 		    
 		    'orders/OrderListController',
+		    'orders/OrderCartController',
+		    'orders/OrderCheckoutController',
+		    'orders/OrderCheckoutCustomerController',
+		    'orders/OrderDetailController',
 		    
 		    'products/ProductListController',
 		    'products/NewProductController',
+		    'products/ProductDetailPopupController',
 		    
-		    'categories/NewCategoryPopupController'
+		    'categories/NewCategoryPopupController',
+		    'attributes/NewAttributePopupController'
 	    ],
 	    filters : [],
 	    directives : [

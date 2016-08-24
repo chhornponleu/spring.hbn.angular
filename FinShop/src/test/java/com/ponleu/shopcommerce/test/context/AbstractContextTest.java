@@ -6,13 +6,10 @@ import javax.inject.Inject;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.mockito.MockitoAnnotations;
 import org.springframework.core.io.Resource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -26,7 +23,6 @@ import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 public class AbstractContextTest {
 
 	protected ObjectMapper objectMapper = new ObjectMapper();
-	protected MockMvc mockMvc;
 
 	@Inject
 	protected WebApplicationContext context;
@@ -63,8 +59,6 @@ public class AbstractContextTest {
 
 	@Before
 	public void before() throws Exception {
-		MockitoAnnotations.initMocks(this);
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).build();
 	}
 
 }

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.persistence.PersistenceException;
 
 import org.hibernate.HibernateException;
 import org.springframework.stereotype.Service;
@@ -29,7 +28,7 @@ public class CategoryServiceImpl implements CategoryService {
 		try {
 			category.setStatus(StatusEnum.STATUS_ACTIVE);
 			categoryDao.save(category);
-		} catch (HibernateException | PersistenceException e) {
+		} catch (HibernateException e) {
 			result = false;
 		}
 		return result;
@@ -41,7 +40,7 @@ public class CategoryServiceImpl implements CategoryService {
 		boolean result = true;
 		try {
 			categoryDao.update(category);
-		} catch (HibernateException | PersistenceException e) {
+		} catch (HibernateException e) {
 			result = false;
 		}
 		return result;
@@ -53,7 +52,7 @@ public class CategoryServiceImpl implements CategoryService {
 		boolean result = true;
 		try {
 			categoryDao.deleteById(id);
-		} catch (HibernateException | PersistenceException e) {
+		} catch (HibernateException e) {
 			result = false;
 		}
 		return result;

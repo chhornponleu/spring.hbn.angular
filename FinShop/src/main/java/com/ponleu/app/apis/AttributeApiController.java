@@ -22,7 +22,17 @@ public class AttributeApiController {
 	@Inject
 	AttributeService attributeService;
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.GET)
+	public RestfulResponse getAll() {
+		RestfulResponse resp = new RestfulResponse();
+		RestfulResponseHeader header = new RestfulResponseHeader();
+		resp.setHeader(header);
+		resp.setBody(attributeService.getAll());
+		return resp;
+		
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
 	public RestfulResponse save(@RequestBody Attribute attribute) {
 		RestfulResponse resp = new RestfulResponse();
 		RestfulResponseHeader header = new RestfulResponseHeader();
@@ -33,7 +43,7 @@ public class AttributeApiController {
 		
 	}
 	
-	@RequestMapping(value = "/existsName/{attributeName}", method = RequestMethod.GET)
+	@RequestMapping(value = "/hasName/{attributeName}", method = RequestMethod.GET)
 	public RestfulResponse existCategoryName(@PathVariable("attributeName") String attributeName) {
 		RestfulResponse resp = new RestfulResponse();
 		RestfulResponseHeader header = new RestfulResponseHeader();

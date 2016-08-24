@@ -6,7 +6,20 @@ app.controllers = $.extend(module, {
 		$scope.data = {};
 		
 		$scope.events = {
-			ok : function () {
+			submit : function (valid) {
+				restServiceProvider.categories.hasName($scope.data, function (resp) {
+					if(resp && resp.header && resp.header.result == false) {
+						restServiceProvider.categories.save($scope.data, function (resp) {
+							$scope.frmNewCategory.$setPristine();
+							closePopup(resp.body);
+						}, function (err) {
+							console.log(err)
+						});
+					}
+					else {
+						alert('Category name has already been taken.');
+					}
+				});
 				
 			},
 			cancel : function () {

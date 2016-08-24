@@ -26,12 +26,14 @@
 	</head>
 	<body class="skin-black login-page">
 		<div class="login-box">
-			<div class="login-logo">
+			<!-- <div class="login-logo">
 				<a href="#"><b>Fin </b>Soft</a>
-			</div>
+			</div> -->
 			<!-- /.login-logo -->
 			<div class="login-box-body">
-				<p class="login-box-msg">Sign in to start your session</p>
+				<div class="login-logo">
+					<a href="#"><b>Fin </b>Soft</a>
+				</div>
 		
 				<h3 class="form-title">Login to your account</h3>
 				<c:if test="${not empty sessionScope.SPRING_SECURITY_LAST_EXCEPTION}">

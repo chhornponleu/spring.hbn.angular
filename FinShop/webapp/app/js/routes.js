@@ -18,6 +18,18 @@
             .when('/orders', {
             	templateUrl : 'app/views/orders/order.list.html'
             })
+            .when('/orders/:orderId/detail', {
+            	templateUrl : 'app/views/orders/order.detail.html'
+            })
+            .when('/orders/cart', {
+            	templateUrl : 'app/views/orders/order.cart.html'
+            })
+            .when('/orders/checkout/customer', {
+            	templateUrl : 'app/views/orders/order.checkout.customer.html'
+            })
+            .when('/orders/checkout', {
+            	templateUrl : 'app/views/orders/order.checkout.html'
+            })
             
             
             // Products
@@ -26,14 +38,6 @@
             })
             .when('/products/addNew', {
             	templateUrl : 'app/views/products/product.addNew.html'
-            })
-            
-            .when('/carts', {
-            	templateUrl : 'app/views/carts.html'
-            })
-            
-            .when('/checkout', {
-            	templateUrl : 'app/views/checkout.html'
             })
             
             // Others

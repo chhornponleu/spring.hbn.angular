@@ -1,9 +1,12 @@
 package com.ponleu.app.entities;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "prodcuts_attributes")
@@ -18,13 +21,8 @@ public class ProductAttributes {
 	@Column(name = "IS_SINGLE_PRICE")
 	private Boolean isSinglePrice;
 
-	public Double getQuanitty() {
-		return quantity;
-	}
-
-	public void setQuanitty(Double quantity) {
-		this.quantity = quantity;
-	}
+	@Transient
+	private BigDecimal unitPrice;
 
 	public ProductAttributeId getId() {
 		return id;
@@ -34,12 +32,28 @@ public class ProductAttributes {
 		this.id = id;
 	}
 
+	public Double getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Double quantity) {
+		this.quantity = quantity;
+	}
+
 	public Boolean getIsSinglePrice() {
 		return isSinglePrice;
 	}
 
 	public void setIsSinglePrice(Boolean isSinglePrice) {
 		this.isSinglePrice = isSinglePrice;
+	}
+
+	public BigDecimal getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(BigDecimal unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 
 }

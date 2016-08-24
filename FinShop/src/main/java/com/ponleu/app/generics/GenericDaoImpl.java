@@ -127,5 +127,7 @@ public class GenericDaoImpl<Entity> implements GenericDao<Entity> {
 	}
 
 
-
+	protected Integer calculateFirstResult(Integer page, Integer pageSize) {
+		return (page - 1) * pageSize;
+	}
 }

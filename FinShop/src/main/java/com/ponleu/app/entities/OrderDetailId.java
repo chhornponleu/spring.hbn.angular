@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Embeddable
 public class OrderDetailId implements Serializable {
 	
@@ -18,6 +20,7 @@ public class OrderDetailId implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="ORDER_ID")
 	@Cascade(CascadeType.SAVE_UPDATE)
+	@JsonIgnore
 	private Order order;
 
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -3,7 +3,7 @@
 	  	<h4>New Product</h4>
 	</section>
 	<section class="content">
-		<form name="frmNewProduct" name="frmNewProduct" novalidate="novalidate">
+		<form name="frmNewProduct" ng-submit="events.submitSave(frmNewProduct.$valid)" novalidate="novalidate"> 
 			<div class="box box-info">
 				<div class="box-header">
 					<h3 class="box-title">Product Info</h3>
@@ -11,7 +11,7 @@
 				<div class="box-body">
 					<div class="form-group">
 						<label for="productName">Product Name: </label> 
-						<input name="productName" id="productName" required="required" type="text" class="form-control" placeholder="Product name">
+						<input name="productName" ng-model="product.productName" id="productName" required="required" type="text" class="form-control" placeholder="Product name">
 					</div>
 					<div class="row">
 						<div class="col-md-6">
@@ -21,29 +21,35 @@
 										<i class="fa fa-plus"></i>
 									</a> 
 								</label> 
-								<select name="categoryId" required="required" class="form-control select2">
-									<option value="">Empty</option>
-								</select>
+								<ui-select ng-model="product.category" theme="bootstrap" ng-required>
+					            	<ui-select-match placeholder="">{{$select.selected.categoryName}}</ui-select-match>
+					            	<ui-select-choices repeat="category in data.config.categories | filter: $select.search">
+					              		<div ng-bind-html="category.categoryName"></div>
+					            	</ui-select-choices>
+					          	</ui-select>
 							</div>
 							<div class="form-group">
-								<label for=""> Attributes
+								<label for="attributes"> Attributes
 									<a ng-click="events.addAttribute()" class="btn btn-xs btn-link" href="javascript:void(0);" class="pull-right"> 
 										<i class="fa fa-plus"></i>
 									</a>
 								</label>
-								<select id="attributes" name="attributes" class="form-control input-sm" required="required" multiple="multiple" style="width: 100%;">
-									<!-- <option value="test">Empty</option> -->
-								</select>
+								<ui-select ng-model="product.attributes" theme="bootstrap" multiple required>
+					            	<ui-select-match placeholder="">{{$item.attributeName}}</ui-select-match>
+					            	<ui-select-choices repeat="attr in data.config.attributes | filter: $select.search">
+					              		<div ng-bind-html="attr.attributeName"></div>
+					            	</ui-select-choices>
+					          	</ui-select>
 							</div>
 							<div class="form-group">
 								<label for="productDescription">Product Description </label> 
-								<textarea name="productDescription" id="productDescription" rows="3" class="form-control" placeholder="Product Description"></textarea>
+								<textarea name="productDescription" ng-model="product.productDescription" id="productDescription" rows="3" class="form-control" placeholder="Product Description"></textarea>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="productName">Product Image: </label> 
-								<input name="productName" ng-model="image" input-img-preview="preview-image" accept="image/*" required="required" type="file" class="form-control">
+								<label for="imageName">Product Image: </label> 
+								<input name="imageName" id="imageName" ng-model="product.imageName" ng-model-data="product.imageFileBase64" input-img-preview="preview-image" accept="image/*" type="file" class="form-control">
 							</div>
 							<div class="form-group" style="max-width:200px;max-height:200px;">
 								<img id="preview-image" src="" class="img-responsive">
@@ -52,12 +58,10 @@
 					</div>
 				</div>
 				<div class="box-footer">
-					<button type="submit" class="btn btn-success">
-						<small><i class="fa fa-save"></i></small> 	Save 
-					</button>
+					<button type="button" ng-click="events.back()" class="btn btn-success"><small><i class="fa fa-arrow-left"></i></small> Cancel</button>
+					<button type="submit" class="btn btn-success"><small><i class="fa fa-save"></i></small> Save</button>
 				</div>
 			</div>
-			
 		</form>
 	</section>
 </div>

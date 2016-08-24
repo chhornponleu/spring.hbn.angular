@@ -42,19 +42,16 @@ public class ProductApiController {
 	}
 	
 
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public RestfulResponse getPaging(@RequestBody Product product) {
 
+		productService.save(product);
 		String imageName = null;
 		if (product.getImageName() != null && !product.getImageName().isEmpty()) {
-			imageName = System.currentTimeMillis() + "."+ scFileService.getFileExtension(product.getImageName());
+			imageName = product.getId() + "." + scFileService.getFileExtension(product.getImageName());
 			product.setImageName(imageName); 
-		}
-		
-		productService.save(product);
-		
-		if(imageName != null) {
 			scFileService.saveProductImge(imageName, product.getImageFileBase64());
+			productService.update(product);
 		}
 
 		Map<String, Object> result = new HashMap<>();

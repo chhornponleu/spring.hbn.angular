@@ -25,15 +25,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @EnableCaching
 @EnableTransactionManagement
-@ComponentScan(basePackages = { 
-	"com.ponleu.shopcommerce.app.*.dao",
-	"com.ponleu.shopcommerce.app.*.services"
-})
+@ComponentScan(basePackages = { "com.ponleu.app.daos", "com.ponleu.app.services" })
 @PropertySource(value = { "classpath:application.properties" })
 public class ApplicationTestInitializer {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationTestInitializer.class);
@@ -47,31 +45,30 @@ public class ApplicationTestInitializer {
 	@Bean
 	public DataSource dataSource() throws PropertyVetoException, JsonParseException, JsonMappingException, IOException {
 		LOGGER.debug("Initializing database connection....");
-		ComboPooledDataSource dataSource = new ComboPooledDataSource();
-		dataSource.setDriverClass(this.env.getProperty("datasource.jdbc.driverClassName"));
-		dataSource.setJdbcUrl(this.env.getProperty("datasource.jdbc.url"));
-		dataSource.setMinPoolSize(Integer.parseInt(this.env.getProperty("datasource.jdbc.minPoolSize")));
-		dataSource.setMaxPoolSize(Integer.parseInt(this.env.getProperty("datasource.jdbc.maxPoolSize")));
-		dataSource.setInitialPoolSize(Integer.parseInt(this.env.getProperty("datasource.jdbc.initialPoolSize")));
-		dataSource.setMaxIdleTime(Integer.parseInt(this.env.getProperty("datasource.jdbc.maxIdleTime")));
-		dataSource.setMaxConnectionAge(Integer.parseInt(this.env.getProperty("datasource.jdbc.maxConnectionAge")));
-		dataSource.setPassword("12345");
-		dataSource.setUser("root");
-		return dataSource;
+		HikariConfig config = new HikariConfig();
+		config.setJdbcUrl(this.env.getProperty("datasource.jdbc.url"));
+		config.setDriverClassName(this.env.getProperty("datasource.jdbc.driverClassName"));
+		config.setUsername("root");
+		config.setPassword("12345");
+		config.addDataSourceProperty("cachePrepStmts", "true");
+		config.addDataSourceProperty("prepStmtCacheSize", "250");
+		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+
+		return new HikariDataSource(config);
 	}
 
 	@Bean
 	public HibernateTransactionManager transactionManager()
 			throws JsonParseException, JsonMappingException, PropertyVetoException, IOException {
-		
+
 		LOGGER.debug("Initializing Hibernate transaction manager....");
-		
+
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
 		transactionManager.setDataSource(this.dataSource());
 		transactionManager.setSessionFactory(this.localSessionFactoryBean().getObject());
-		
+
 		LOGGER.debug("End initializing Hibernate transaction manager....");
-		
+
 		return transactionManager;
 	}
 
@@ -85,7 +82,7 @@ public class ApplicationTestInitializer {
 		sessionFactoryBean.setHibernateProperties(this.hibernateProperties());
 		return sessionFactoryBean;
 	}
-	
+
 	@Bean
 	public CacheManager cacheManager() {
 		LOGGER.debug("Initializing ehcache manager....");
@@ -117,7 +114,7 @@ public class ApplicationTestInitializer {
 				this.env.getProperty("datasource.hibernate.generate_statistics"));
 		properties.put("hibernate.connection.characterEncoding", "UTF-8");
 		properties.put("hibernate.connection.charSet", "UTF-8");
-		//properties.put("hibernate.hbm2ddl.auto", "validate");
+		// properties.put("hibernate.hbm2ddl.auto", "validate");
 		return properties;
 	}
 

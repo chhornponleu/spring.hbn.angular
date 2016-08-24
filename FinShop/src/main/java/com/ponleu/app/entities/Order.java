@@ -15,8 +15,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "orders")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Order {
 
 	@Id
@@ -25,9 +32,11 @@ public class Order {
 	private Long id;
 
 	@Column(name = "ORDER_DATE")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date orderDate;
 
 	@Column(name = "PICKUP_DATE")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date pickupDate;
 
 	@Column(name = "TOTAL_AMOUNT")
@@ -47,6 +56,7 @@ public class Order {
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "CUSTOMER_ID")
+	@Cascade(CascadeType.SAVE_UPDATE)
 	private Customer customer;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -54,6 +64,7 @@ public class Order {
 	private User orderBy;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "id.order")
+	@Cascade(CascadeType.SAVE_UPDATE)
 	private Set<OrderDetail> orderDetails;
 
 	public Long getId() {
@@ -227,6 +238,14 @@ public class Order {
 		} else if (!totalAmount.equals(other.totalAmount))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", orderDate=" + orderDate + ", pickupDate=" + pickupDate + ", totalAmount="
+				+ totalAmount + ", paidAmount=" + paidAmount + ", discountAmount=" + discountAmount + ", taxAmount="
+				+ taxAmount + ", status=" + status + ", customer=" + customer + ", orderBy=" + orderBy
+				+ ", orderDetails=" + orderDetails + "]";
 	}
 
 }

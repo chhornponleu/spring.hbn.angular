@@ -74,8 +74,4 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
 		ctr.addOrder(Order.desc("createdDate"));
 		return ctr.list();
 	}
-
-	private Integer calculateFirstResult(Integer page, Integer pageSize) {
-		return (page - 1) * pageSize;
-	}
 }

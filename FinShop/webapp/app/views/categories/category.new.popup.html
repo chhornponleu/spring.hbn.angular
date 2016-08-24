@@ -1,12 +1,21 @@
-<div ng-controller="NewProductController">
+<form name="frmNewCategory" ng-submit="events.submit(frmNewCategory.$valid)" novalidate="novalidate">
 	<div class="modal-header">
 	    <h3 class="modal-title">New Category</h3>
 	</div>
 	<div class="modal-body">
-	   
+		
+		<div class="form-group">
+       		<label for="categoryName">Category Name</label>
+      		<input name="categoryName" ng-model="data.categoryName" id="categoryName" type="text" required="required" class="form-control" placeholder="">
+   		</div>
+   		<div class="form-group">
+       		<label for="categoryDesc">Category Description</label>
+      		<textarea name="categoryDesc" ng-model="data.categoryDesc" id="categoryDesc" rows="3" type="text" class="form-control" placeholder=""></textarea>
+   		</div>
+		
 	</div>
 	<div class="modal-footer">
-	    <button class="btn btn-primary" type="button" ng-click="events.ok()">OK</button>
+	    <button class="btn btn-primary" type="submit">OK</button>
 	    <button class="btn btn-warning" type="button" ng-click="events.cancel()">Cancel</button>
 	</div>
-</div>
+</form>	

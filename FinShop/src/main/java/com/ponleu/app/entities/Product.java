@@ -19,10 +19,12 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "products")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;

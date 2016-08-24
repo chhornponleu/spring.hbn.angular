@@ -22,6 +22,7 @@ import com.ponleu.config.context.WebMvcCtxConfig;
 import com.ponleu.config.context.WebRootCtxConfig;
 import com.ponleu.config.context.WebSecurityCtxConfig;
 import com.ponleu.config.datasource.DataSourceConfig;
+import com.ponleu.config.session.SessionListener;
 
 @Configuration
 public class ApplicationInitializer implements WebApplicationInitializer {
@@ -79,6 +80,7 @@ public class ApplicationInitializer implements WebApplicationInitializer {
 		dispatcherServlet.setLoadOnStartup(Integer.parseInt(this.properties.getProperty("mvc.load.onStartup", LOAD_ON_STARTUP)));
 		dispatcherServlet.addMapping(this.properties.getProperty("mvc.mapping.url", SERVLET_MAPPING_URL));
 		servletContext.getSessionCookieConfig().setName(this.properties.getProperty("mvc.cookie.name", COOKIE_NAME));
+		servletContext.addListener(new SessionListener());
 	}
 	
 	protected void loadPropertiesFile() {

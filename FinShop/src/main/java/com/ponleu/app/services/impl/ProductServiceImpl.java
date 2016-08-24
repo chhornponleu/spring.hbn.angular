@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.persistence.PersistenceException;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
@@ -48,7 +47,7 @@ public class ProductServiceImpl implements ProductService {
 			product.setCreatedBy(SecurityUtil.getCurrentUserName());
 			productDao.save(product);
 			logger.info("Product ID: " + product.getId() + " has been saved successfully");
-		} catch (HibernateException | PersistenceException e) {
+		} catch (HibernateException e) {
 			logger.error("Cannot save product " + product.toString(), e);
 			result = false;
 		}
@@ -61,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
 		boolean result = true;
 		try {
 			productDao.deleteById(id);
-		} catch (HibernateException | PersistenceException e) {
+		} catch (HibernateException e) {
 			logger.error("Cannot delete product ID: " + id, e);
 			result = false;
 		}
@@ -74,7 +73,7 @@ public class ProductServiceImpl implements ProductService {
 		boolean result = true;
 		try {
 			productDao.update(product);
-		} catch (HibernateException | PersistenceException e) {
+		} catch (HibernateException e) {
 			logger.error("Cannot delete update product: " + product.toString(), e);
 			result = false;
 		}
@@ -91,7 +90,7 @@ public class ProductServiceImpl implements ProductService {
 			if (total > 0) {
 				products = productDao.getPagination(pagingRequest);
 			}
-		} catch (HibernateException | PersistenceException e) {
+		} catch (HibernateException e) {
 			logger.error("Cannot paginate product: " + pagingRequest.toString(), e);
 		}
 
