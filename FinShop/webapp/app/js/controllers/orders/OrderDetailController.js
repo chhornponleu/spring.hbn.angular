@@ -1,8 +1,31 @@
 (function(module) {
 
 app.controllers = $.extend(module, {
-	OrderDetailController : function ($scope, $rootScope, $routeParams, restServiceProvider) { 
+	OrderDetailController : function ($scope, $rootScope, $routeParams, $timeout, restServiceProvider) { 
 		var orderId = $routeParams.orderId;
+		
+		$scope.events = {
+			print : function () {
+				$rootScope.isPrinting = true;
+				$timeout(function () {
+					window.print();
+					$rootScope.isPrinting = false;
+				},300);
+			},
+			orderPaid : function () {
+				restServiceProvider.orders.setPaid({id : $scope.order.id}, function (resp) {
+					if(resp && resp.header && resp.header.result) {
+						$scope.order.status = 'SA';
+					}
+					else {
+						alert('Something wrong happened. Please contact System Administrator.');
+					}
+				}, function () {
+					alert('Ooop....');
+				});
+			}
+		};
+		
 		restServiceProvider.orders.get({orderId:orderId}, function (resp) {
 			if(resp && resp.header && resp.header.result) {
 				var order = resp.body;
@@ -44,7 +67,7 @@ app.controllers = $.extend(module, {
 	}
 });
 
-app.ng.application.controller('OrderDetailController', ['$scope', '$rootScope', '$routeParams', 'restServiceProvider', app.controllers.OrderDetailController]).run(function () {
+app.ng.application.controller('OrderDetailController', ['$scope', '$rootScope', '$routeParams', '$timeout', 'restServiceProvider', app.controllers.OrderDetailController]).run(function () {
 	console.info('Welcome controller has been initialized');
 });
 

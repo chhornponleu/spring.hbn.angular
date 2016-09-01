@@ -51,8 +51,9 @@ public class DataSourceConfig {
 		HikariConfig config = new HikariConfig();
 		config.setJdbcUrl(this.env.getProperty("datasource.jdbc.url"));
 		config.setDriverClassName(this.env.getProperty("datasource.jdbc.driverClassName"));
-		config.setUsername("root");
-		config.setPassword("12345");
+		config.setUsername(this.env.getProperty("datasource.jdbc.username"));
+		config.setPassword(this.env.getProperty("datasource.jdbc.password"));
+		config.setMaximumPoolSize(Integer.parseInt(this.env.getProperty("datasource.jdbc.maxPoolSize")));
 		config.addDataSourceProperty("cachePrepStmts", "true");
 		config.addDataSourceProperty("prepStmtCacheSize", "250");
 		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");

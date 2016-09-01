@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ponleu.app.dto.ProductPagingRequest;
+import com.ponleu.app.dto.OrderPagingRequest;
 import com.ponleu.app.dto.RestfulResponse;
 import com.ponleu.app.dto.RestfulResponseHeader;
 import com.ponleu.app.entities.Order;
@@ -40,7 +40,17 @@ public class OrderApiController {
 	};
 
 	@RequestMapping(value = "/paging", method = RequestMethod.POST)
-	public RestfulResponse getPaging(@RequestBody ProductPagingRequest pagingRequest) {
-		return null; //new RestfulResponse(new RestfulResponseHeader(), orderService.getPagination(pagingRequest));
+	public RestfulResponse getPaging(@RequestBody OrderPagingRequest pagingRequest) {
+		return new RestfulResponse(new RestfulResponseHeader(), orderService.getPagination(pagingRequest));
 	}
+	
+	@RequestMapping(value="/set-paid", method = RequestMethod.POST)
+	public RestfulResponse setOrderPaid(@RequestBody Order order) {
+		boolean result = orderService.setPaid(order.getId());		
+		
+		RestfulResponse resp = new RestfulResponse();
+		resp.setBody(null);
+		resp.setHeader(new RestfulResponseHeader(result, null, null, null)); 
+		return resp;
+	};
 }

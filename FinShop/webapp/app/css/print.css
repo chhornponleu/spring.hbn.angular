@@ -1,0 +1,11 @@
+
+/** Report **/
+.table>tbody+tbody:not(:first-child){ border-top:none;}
+.print-logo {max-width:100px;}
+.color-white {color:white;}
+.print.sidebar-mini.sidebar-collapse .content-wrapper, .print .content-wrapper {margin-left: 0 !important;}
+@media print {
+	.invoice-footer {position:fixed; bottom:0;left:0;right:0;}
+	.invoice {min-height: 990px;}
+}
+	

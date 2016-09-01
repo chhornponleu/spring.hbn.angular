@@ -1,5 +1,7 @@
 <div class="container-dash" ng-controller="OrderCheckoutController">
-	<section class="content-header">Order Checkout</section>
+	<section class="content-header">
+		Order Checkout
+	</section>
 	
 	<section class="content">
 		<form name="frmCheckout" ng-submit="events.saveOrder(frmCheckout.$valid)" novalidate="novalidate">
@@ -37,12 +39,42 @@
 										<td>{{attr.id.attribute.attributeName}}</td>
 										<td><input name="quantity{{$parent.$index}}{{$index}}" ng-model="attr.quantity" type="number" step="0.0001" class="form-control" required="required"></td>
 										<td><input name="unitPrice{{$parent.$index}}{{$index}}" ng-model="attr.unitPrice" type="number" step="0.001" class="form-control" required="required"></td>
-										<td><span ng-show="attr.quantity * attr.unitPrice">{{attr.quantity * attr.unitPrice}}</span></td>
+										<td class="text-right"><span ng-show="attr.quantity * attr.unitPrice">$ {{attr.quantity * attr.unitPrice |number}}</span></td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-xs-6"></div>
+						<div class="col-xs-6">
+							<div class="table-responsive">
+								<table class="table">
+									<tbody>
+										<tr>
+											<th>តម្លៃ​សរុប Total Due</th>
+											<td>{{order.totalAmount |number}}</td>
+										</tr>
+										<tr>
+											<th>បញ្ចុះតំលៃ Discount</th>
+											<td>
+												<input ng-model="order.discountAmount" type="number" step="0.001">
+											</td>
+										</tr>
+										<tr>
+											<th>ប្រាក់កក់  Deposit</th>
+											<td>
+												<input ng-model="order.paidAmount" type="number" step="0.001">
+											</td>
+										</tr>
+										<tr>
+											<th>នៅខ្វះ  Balance Due</th>
+											<td>{{order.totalAmount - order.discountAmount - order.paidAmount | number}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
 				</div>
 				<div class="box-footer">
 					<button type="submit" class="btn btn-success">Submit</button>

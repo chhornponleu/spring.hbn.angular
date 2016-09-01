@@ -1,6 +1,9 @@
 package com.ponleu.app.services.impl;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -61,7 +64,50 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public OrderPagingResponse getPagination(OrderPagingRequest pagingRequest) {
-		return null;
+		List<Order> orders = new ArrayList<>();
+		Long total = 0L;
+		try {
+			total = orderDao.count(pagingRequest.getSearch());
+			if(total > 0L) {
+				orders = orderDao.getPagination(pagingRequest);
+			}
+		}
+		catch (HibernateException e) {
+			LOGGER.error("Cannot paginate order: " + pagingRequest.toString(), e);
+		}
+		OrderPagingResponse resp = new OrderPagingResponse();
+		resp.setData(orders);
+		resp.setTotal(total);
+		resp.setPage(pagingRequest.getPage());
+		resp.setPageSize(pagingRequest.getPageSize()); 
+		
+		return resp;
+		
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public boolean setPaid(Long orderId) {
+		boolean result = true;
+		try {
+			Order order = orderDao.get(orderId);
+			if(order == null) {
+				result = false;
+			}
+			else {
+				order.setStatus(StatusEnum.STATUS_ACTIVE);
+				BigDecimal discount = order.getDiscountAmount();
+				if(discount == null) {
+					discount = BigDecimal.ZERO;
+				}
+				order.setPaidAmount(order.getTotalAmount().subtract(discount)); 
+				orderDao.update(order); 
+			}
+		}
+		catch(HibernateException e) {
+			result = false;
+		}
+		return result;
 	}
 
 }

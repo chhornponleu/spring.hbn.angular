@@ -1,5 +1,6 @@
 (function(app) {
-	var defineHeaders = function($httpProvider) {
+	var defineHeaders = function($httpProvider, $translateProvider) {
+		
 		
 		// Enable CORS! (see e.g. http://enable-cors.org/)
         //$httpProvider.defaults.useXDomain = true;
@@ -8,6 +9,15 @@
         //Set headers
         $httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
         $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+        
+        
+        // Language setup
+        $translateProvider.useStaticFilesLoader({
+            'prefix': 'app/i18n/locale-',
+            'suffix': '.json'
+        });
+        $translateProvider.preferredLanguage('kh');
+        $translateProvider.useSanitizeValueStrategy('sanitize');
 		
 	};
 	

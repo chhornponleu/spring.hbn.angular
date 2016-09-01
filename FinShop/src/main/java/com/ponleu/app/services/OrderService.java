@@ -8,5 +8,5 @@ public interface OrderService {
 	public boolean save(Order order);
 	public Order getDetailById(Long orderId);
 	public OrderPagingResponse getPagination(OrderPagingRequest pagingRequest);
-	
+	public boolean setPaid(Long orderId);
 }

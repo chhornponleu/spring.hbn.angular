@@ -19,10 +19,12 @@
 						var img = document.getElementById(imgId);
 						img.src = e.target.result;
 						
+						// model for image name
 						if(attr.ngModel) {
 							$parse(attr.ngModel).assign(scope, el.val())
 						}
 						
+						// model data for image data base 64
 						if(attr.ngModelData) {
 							$parse(attr.ngModelData).assign(scope, e.target.result);
 						}

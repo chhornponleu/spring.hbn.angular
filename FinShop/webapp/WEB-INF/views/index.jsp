@@ -16,6 +16,8 @@
 		<link rel="stylesheet" href="${baseUrl}app/bower_components/angular-ui-select/dist/select.css">
 		
 		<link rel="stylesheet" href="${baseUrl}app/css/common.css">
+		<link rel="stylesheet" href="${baseUrl}app/css/print.css">
+		
 		
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,13 +27,13 @@
 		<![endif]-->
 		
 	</head>
-	<body class="sidebar-mini skin-black fixed" ng-class="{'sidebar-collapse' : collapsed}" ng-cloak>
+	<body class="sidebar-mini skin-black fixed" ng-class="{'sidebar-collapse' : collapsed, 'print' : isPrinting}" ng-cloak>
 		<div class="wrapper">
 			<header class="main-header">
 				<!-- Logo -->
 				<a href="#!/" class="logo bg-yellow">
 					<span class="logo-mini"><b>F</b>IN</span>
-					<span class="logo-lg"><b>FIN</b> POS</span>
+					<span class="logo-lg" translate="app_name"></span>
 				</a>
 				<nav class="navbar navbar-static-top" style="background-color: rgba(255, 255, 255, 0.9);">
 					<!-- Sidebar toggle button-->
@@ -45,20 +47,15 @@
 						<ul class="nav navbar-nav">
 							<li class="dropdown notifications-menu">
 								<a href="#!/orders/cart" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-shopping-cart"></i> <span class="label label-success" ng-bind="cart.count"></span>
+									<i class="fa fa-shopping-cart"></i> 
+									<span translate="menu.cart"></span>
+									<span class="label label-info" ng-bind="cart.count"></span>
 								</a>
-								<ul class="dropdown-menu">
-									<li>
-										<button class="btn btn-sm btn-info btn-block" ng-click="events.clearCart()">
-											<i class="fa fa-refresh"></i> Clear
-										</button>
-									</li>
-								</ul>
 							</li>
 							<li class="dropdown user user-menu">
 				            	<a href="#!/user/profile" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 				              		<i class="fa fa-user"></i> 
-					              	<span class="hidden-xs"> Profile</span>
+					              	<span class="hidden-xs" translate="menu.profile"></span>
 				            	</a>
 					   		</li>
 					   		<li> 
@@ -72,20 +69,17 @@
 				</nav>
 			</header>
 
-			<aside class="main-sidebar">
+			<aside class="main-sidebar hidden-print">
 				<section class="sidebar">
 					<ul class="sidebar-menu">
 						<li class="treeview">
-							<a href="#!/"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
+							<a href="#!/"><i class="fa fa-dashboard"></i><span translate="menu.dashboard"></span></a>
 						</li>
 						<li class="treeview">
-							<a href="#!/products"><i class="fa fa-list"></i><span>Product</span></a>
+							<a href="#!/products"><i class="fa fa-list"></i><span translate="menu.product"></span></a>
 						</li>
 						<li class="treeview">
-							<a href="#!/orders"><i class="fa fa-get-pocket"></i><span>Order</span></a>
-						</li>
-						<li class="treeview">
-							<a href="#!/user"><i class="fa fa-user-md"></i><span>Profile</span></a>
+							<a href="#!/orders"><i class="fa fa-get-pocket"></i><span translate="menu.order"></span></a>
 						</li>
 					</ul>
 				</section>

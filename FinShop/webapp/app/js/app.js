@@ -3,7 +3,7 @@ var app = (function (modules) {
 	    config: angular.module('config', []),
 	    services: angular.module('services', ['ngResource']),
 	    components : angular.module('components', []),
-		application : angular.module('app', ['services', 'components', 'config', 'ngRoute', 'ngSanitize', 'ui.bootstrap', 'ui.select'])
+		application : angular.module('app', ['services', 'components', 'config', 'ngRoute', 'ngSanitize', 'ui.bootstrap', 'ui.select', 'pascalprecht.translate'])
 	};
 	
 	modules.ng.config.value('pagingConfig', {

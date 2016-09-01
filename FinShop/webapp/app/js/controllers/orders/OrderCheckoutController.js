@@ -46,13 +46,17 @@ app.controllers = $.extend(module, {
 			}
 		};
 		
+		$scope.$watch('products', function (old, new_) {
+			$scope.order.totalAmount = getTotalAmount();
+		}, true)
+		
 		function buildOrderObject() {
 			var order = orderTpl;
 			
 			order.pickupDate = new Date();
 			order.totalAmount = getTotalAmount();
-			order.paidAmount = 200,
-			order.discountAmount = 0;
+			order.paidAmount = $scope.order.paidAmount,
+			order.discountAmount = $scope.order.discountAmount || 0;
 			order.taxAmount = 0;
 			order.customer = $scope.order.customer;
 			order.orderDetails = [];
@@ -75,8 +79,25 @@ app.controllers = $.extend(module, {
 		}
 		
 		function getTotalAmount () {
-			return 0;
+			var total = 0;
+			if($scope.products && $scope.products.length >0) {
+				angular.forEach($scope.products, function (pItem, pIndex) {
+					if(pItem.attributes) {
+						var attributes = pItem.attributes;
+						angular.forEach(attributes, function (oItem, oIndex) {
+							var t = oItem.quantity * oItem.unitPrice;
+							if(!isNaN(t)) {
+								total +=t;
+							}
+							
+						});
+					}
+				});
+			}
+			return total;
 		}
+		
+		
 	}
 });
 

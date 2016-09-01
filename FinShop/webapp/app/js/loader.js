@@ -11,10 +11,9 @@
 			'angular-animate' : '../bower_components/angular-animate/angular-animate.min',
 			'angular-sanitize' : '../bower_components/angular-sanitize/angular-sanitize.min',
 			'angular-ui-select' : '../bower_components/angular-ui-select/dist/select.min',
-			//'angular-select2' : '../bower_components/angular-ui-select2/src/select2',
-			
 			'jquery' : '../bower_components/jquery/dist/jquery.min',
-			//'select2' : '../bower_components/select2/dist/js/select2'
+			'angular-translate' : '../bower_components/angular-translate/angular-translate.min',
+			'angular-translate-file' : '../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min',
 		},
 		shim : {
 			'angular' : { exports : 'angular' },
@@ -24,11 +23,12 @@
 			'angular-animate' : { deps : ['angular']},
 			'angular-sanitize' : { deps : ['angular']},
 			'angular-ui-select' : { deps : ['angular']},
-			//'angular-select2' : { deps : ['angular', 'jquery', 'select2']},
-			//'select2' : { deps : ['jquery']},
+			'angular-translate' : { deps : ['angular']},
+			'angular-translate-file' : { deps : ['angular', 'angular-translate']},
 			'app' : {
 				deps : [ 'angular', 'jquery', 'angular-resource', 'angular-route', 
-				         'angular-bootstrap', 'angular-animate', 'angular-sanitize', 'angular-ui-select'],
+				         'angular-bootstrap', 'angular-animate', 'angular-sanitize', 'angular-ui-select',
+				         'angular-translate', 'angular-translate-file'],
 				exports : 'app'
 			}
 		}

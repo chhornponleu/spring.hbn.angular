@@ -22,9 +22,12 @@ public class Attribute {
 
 	@Column(name = "ATTR_NAME", length = 45, unique = true, nullable = false)
 	private String attributeName;
-
+	
 	@Column(name = "ATTR_DESC", length = 255)
 	private String attributeDesc;
+
+	@Column(name = "UNIT", length = 45)
+	private String unit;
 
 	@Column(name = "STATUS", length = 10)
 	private String status;
@@ -83,6 +86,14 @@ public class Attribute {
 		this.orderDetails = orderDetails;
 	}
 
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -93,6 +104,7 @@ public class Attribute {
 		result = prime * result + ((orderDetails == null) ? 0 : orderDetails.hashCode());
 		result = prime * result + ((products == null) ? 0 : products.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((unit == null) ? 0 : unit.hashCode());
 		return result;
 	}
 
@@ -134,6 +146,11 @@ public class Attribute {
 			if (other.status != null)
 				return false;
 		} else if (!status.equals(other.status))
+			return false;
+		if (unit == null) {
+			if (other.unit != null)
+				return false;
+		} else if (!unit.equals(other.unit))
 			return false;
 		return true;
 	}

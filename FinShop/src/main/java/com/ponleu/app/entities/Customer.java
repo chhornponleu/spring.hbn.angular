@@ -39,6 +39,23 @@ public class Customer {
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Set<Order> orders;
 
+	public Customer() {
+	}
+
+	public Customer(String customerName, String address, String contact) {
+		this.customerName = customerName;
+		this.address = address;
+		this.contact = contact;
+	}
+
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
+
 	public Integer getId() {
 		return id;
 	}

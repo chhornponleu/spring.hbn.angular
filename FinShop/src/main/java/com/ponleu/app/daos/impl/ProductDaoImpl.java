@@ -3,6 +3,10 @@ package com.ponleu.app.daos.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
@@ -34,7 +38,8 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
 				criterions.add(Restrictions.like("productName", "%".concat(search.getProductName()).concat("%")));
 			}
 			if (search.getProductDescription() != null) {
-				criterions.add(Restrictions.like("productDescription", "%".concat(search.getProductDescription()).concat("%")));
+				criterions.add(Restrictions.like("productDescription",
+						"%".concat(search.getProductDescription()).concat("%")));
 			}
 
 			ctr.add(Restrictions.or(criterions.toArray(new Criterion[criterions.size()])));
@@ -63,7 +68,8 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
 				criterions.add(Restrictions.like("productName", "%".concat(search.getProductName()).concat("%")));
 			}
 			if (search.getProductDescription() != null) {
-				criterions.add(Restrictions.like("productDescription", "%".concat(search.getProductDescription()).concat("%")));
+				criterions.add(Restrictions.like("productDescription",
+						"%".concat(search.getProductDescription()).concat("%")));
 			}
 
 			ctr.add(Restrictions.or(criterions.toArray(new Criterion[criterions.size()])));

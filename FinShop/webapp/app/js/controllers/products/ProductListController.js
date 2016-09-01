@@ -26,7 +26,7 @@ app.controllers = $.extend(module, {
 				searchTimeout = setTimeout(function () {
 					console.log($scope.data)
 					reloadProductList();
-				}, 1000);
+				}, 800);
 			}
 		};
 		

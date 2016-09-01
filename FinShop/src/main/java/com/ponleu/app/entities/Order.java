@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -57,6 +59,7 @@ public class Order {
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "CUSTOMER_ID")
 	@Cascade(CascadeType.SAVE_UPDATE)
+	@Fetch(FetchMode.JOIN)
 	private Customer customer;
 
 	@ManyToOne(fetch = FetchType.LAZY)

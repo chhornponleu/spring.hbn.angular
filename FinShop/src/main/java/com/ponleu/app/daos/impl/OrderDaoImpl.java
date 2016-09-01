@@ -2,8 +2,7 @@ package com.ponleu.app.daos.impl;
 
 import java.util.List;
 
-import javax.persistence.Query;
-
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.ponleu.app.commons.StatusEnum;
@@ -15,94 +14,80 @@ import com.ponleu.app.generics.GenericDaoImpl;
 
 @Repository
 public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
+	private static String HQL = "FROM Order od WHERE (od.status = :statusActive OR od.status = :statusPending) ";
+	private static String HQL_SEARCH = " AND (od.id = :orderId OR od.customer.contact LIKE :contact "
+			+ "OR od.customer.customerName LIKE :customerName OR od.customer.address LIKE :address)";
 
 	@Override
 	public Long count(Order search) {
-		String hql = "SELECT count(od) " + this.buildOrderSearchHQL(search);
-		System.out.println(hql);
-		Query query = this.getSession().createQuery(hql);
-		query.setParameter("status", StatusEnum.STATUS_DEACTIVE);
-		if (search != null) {
-			Customer customer = search.getCustomer();
-			if (hql.indexOf(":orderId") != -1) {
-				query.setParameter("orderId", search.getId());
-			}
-			if (hql.indexOf(":customerName") != -1) {
-				query.setParameter("customerName", "%" + customer.getCustomerName() + "%");
-			}
-			if (hql.indexOf(":contact") != -1) {
-				query.setParameter("contact", "%" + customer.getContact() + "%");
-			}
-			if (hql.indexOf(":address") != -1) {
-				query.setParameter("address", "%" + customer.getAddress() + "%");
+		String hql = "SELECT count(od) " + HQL;
+		hql += HQL_SEARCH;
+
+		Query<Long> query = this.getSession().createQuery(hql, Long.class);
+		Customer customer = null;
+		if (search == null) {
+			search = new Order();
+		}
+		else {
+			customer = search.getCustomer();
+			if (customer == null) {
+				if(search.getId() != null) {
+					customer = new Customer("", "", "");
+				}
+				else {
+					customer = new Customer("%", "%", "%");
+				}
+			} else {
+				customer.setContact(customer.getContact() == null ? "" : "%" + customer.getContact() + "%");
+				customer.setAddress(customer.getAddress() == null ? "" : "%" + customer.getAddress() + "%");
+				customer.setCustomerName(customer.getCustomerName() == null ? "" : "%" + customer.getCustomerName() + "%");
 			}
 		}
+		query.setParameter("statusActive", StatusEnum.STATUS_ACTIVE);
+		query.setParameter("statusPending", StatusEnum.STATUS_PENDING);
+		query.setParameter("orderId", search.getId());
+		query.setParameter("customerName", customer.getCustomerName());
+		query.setParameter("contact", customer.getContact());
+		query.setParameter("address", customer.getAddress());
+
 		return (Long) query.getSingleResult();
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public List<Order> getPagination(OrderPagingRequest pagingRequest) {
 		Order search = pagingRequest.getSearch();
 
-		String hql = this.buildOrderSearchHQL(search);
+		String hql = HQL;
+		hql += (HQL_SEARCH + " ORDER BY od.id DESC");
 		System.out.println(hql);
 
-		Query query = this.getSession().createQuery(hql);
-		query.setParameter("status", StatusEnum.STATUS_DEACTIVE);
+		Query<Order> query = this.getSession().createQuery(hql, Order.class);
 		query.setMaxResults(pagingRequest.getPageSize());
 		query.setFirstResult(calculateFirstResult(pagingRequest.getPage(), pagingRequest.getPageSize()));
 
-		if (search != null) {
-			Customer customer = search.getCustomer();
-			if (hql.indexOf(":orderId") != -1) {
-				query.setParameter("orderId", search.getId());
-			}
-			if (hql.indexOf(":customerName") != -1) {
-				query.setParameter("customerName", "%" + customer.getCustomerName() + "%");
-			}
-			if (hql.indexOf(":contact") != -1) {
-				query.setParameter("contact", "%" + customer.getContact() + "%");
-			}
-			if (hql.indexOf(":address") != -1) {
-				query.setParameter("address", "%" + customer.getAddress() + "%");
-			}
+		if (search == null) {
+			search = new Order();
 		}
-
+		Customer customer = search.getCustomer();
+		if (customer == null) {
+			if(search.getId() != null) {
+				customer = new Customer("", "", "");
+			}
+			else {
+				customer = new Customer("%", "%", "%");
+			}
+		} else {
+			customer.setContact(customer.getContact() == null ? "" : "%" + customer.getContact() + "%");
+			customer.setAddress(customer.getAddress() == null ? "" : "%" + customer.getAddress() + "%");
+			customer.setCustomerName(customer.getCustomerName() == null ? "" : "%" + customer.getCustomerName() + "%");
+		}
+		query.setParameter("statusActive", StatusEnum.STATUS_ACTIVE);
+		query.setParameter("statusPending", StatusEnum.STATUS_PENDING);
+		query.setParameter("orderId", search.getId());
+		query.setParameter("customerName", customer.getCustomerName());
+		query.setParameter("contact", customer.getContact());
+		query.setParameter("address", customer.getAddress());
 		return query.getResultList();
-	}
-
-	/**
-	 * Build Order Search HQL
-	 * 
-	 * @param order
-	 * @return String started with "FROM ...."
-	 */
-	public String buildOrderSearchHQL(Order order) {
-		String hql = "FROM Order od WHERE od.status IS NOT :status";
-
-		if (order == null) {
-			return hql;
-		}
-
-		if (order.getId() != null) {
-			hql += " AND od.id = :orderId";
-		}
-
-		Customer customer = order.getCustomer();
-		if (customer != null) {
-			if (customer.getCustomerName() != null) {
-				hql += " OR od.customer.customerName LIKE :customerName";
-			}
-			if (customer.getContact() != null) {
-				hql += " OR od.customer.contact LIKE :contact";
-			}
-			if (customer.getAddress() != null) {
-				hql += " OR od.customer.address LIKE :address";
-			}
-		}
-
-		return hql;
 	}
 
 }

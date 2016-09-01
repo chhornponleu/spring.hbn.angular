@@ -87,7 +87,7 @@ public class ProductServiceImpl implements ProductService {
 		try {
 
 			total = productDao.count(pagingRequest.getSearch());
-			if (total > 0) {
+			if (total > 0L) {
 				products = productDao.getPagination(pagingRequest);
 			}
 		} catch (HibernateException e) {

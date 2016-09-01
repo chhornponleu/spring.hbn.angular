@@ -1,6 +1,7 @@
 <div class="container-dash" ng-controller="OrderCartController">
 	<section class="content-header">
-	  	<h4>New Product</h4>
+	  	<button ng-click="events.clearCart()" type="button" class="btn btn-warning pull-right" translate="button.clear"></button>
+	  	<h4 translate="header.cart"></h4>
 	</section>
 	<section class="content">
 		<div class="box box-info">
@@ -9,12 +10,12 @@
 					<div class="col-xs-12">No product in cart yet</div>
 				</div>
 				<div class="row product-list" ng-repeat="pro in products">
-					<div class="col-xs-2 col-lg-1">
+					<div class="col-xs-3 col-lg-2">
 						<div class="product-image">
 							<img ng-src="images/products/{{pro.imageName}}" class="img-responsive">
 						</div>
 					</div>
-					<div class="col-xs-10 col-lg-11">
+					<div class="col-xs-9 col-lg-10">
 						<span class="badge bg-red pull-right" ng-click="events.removeProduct($index)"><i class="fa fa-remove"></i></span>
 						<strong ng-cloack>{{pro.productName}}</strong>
 						<p ng-bind-html="pro.productDescription"></p>
@@ -27,7 +28,10 @@
 				</div>
 			</div>
 			<div class="box-footer">
-				<a href="#!orders/checkout/customer" class="btn btn-success"><i class="fa fa-money"></i> Checkout</a>
+				<a href="#!orders/checkout/customer" class="btn btn-success">
+					<span  translate="button.next"></span> 
+					<i class="fa fa-chevron-right"></i> 
+				</a>
 			</div>
 		</div>
 	</section>

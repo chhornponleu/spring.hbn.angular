@@ -1,7 +1,7 @@
 .main-header .logo {
 	border-right: none !important;
 }
-
+.fixed .main-sidebar, .fixed .left-side{background:#fff;}
 .navbar-nav>.user-menu>.dropdown-menu>li.user-header {
 	height: 185px;
 }
@@ -48,14 +48,14 @@
 
 /** Product List **/
 .product-list {
-	margin-bottom: 15px;
+	margin-bottom: 0;
 	padding: 10px;
-	background-color: #fff;
 	border-radius: 3px;
 }
 
 .product-image:before {
 	content: " ";
+	
 }
 
 .product-image {

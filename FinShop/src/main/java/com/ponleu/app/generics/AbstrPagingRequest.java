@@ -1,5 +1,8 @@
 package com.ponleu.app.generics;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AbstrPagingRequest<T extends Object> {
 	/**
 	 * Page number

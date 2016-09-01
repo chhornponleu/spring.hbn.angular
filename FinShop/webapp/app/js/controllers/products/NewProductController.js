@@ -21,27 +21,34 @@ app.controllers = $.extend(module, {
 				openAddAttributePopup();
 			},
 			submitSave : function ($valid) {
-				var product = angular.extend($scope.product,{});
-				var attributes = [];
-				angular.forEach(product.attributes, function (item, index) {
-					var attr = {
-						id : {
-							attribute : {
-								id : item.id
+				if($valid) {
+					if(!$scope.product.imageName || !$scope.product.imageName){
+						alert('Please select an image');
+						return;
+					}
+					
+					var product = angular.extend($scope.product,{});
+					var attributes = [];
+					angular.forEach(product.attributes, function (item, index) {
+						var attr = {
+							id : {
+								attribute : {
+									id : item.id
+								}
 							}
+						};
+						attributes.push(attr);
+					});
+					product.attributes = attributes;
+					restServiceProvider.products.save(product, function (resp) {
+						if(resp && resp.header && resp.header.result == true) {
+							$scope.events.routeToProduct();
 						}
-					};
-					attributes.push(attr);
-				});
-				product.attributes = attributes;
-				restServiceProvider.products.save(product, function (resp) {
-					if(resp && resp.header && resp.header.result == true) {
-						$scope.events.routeToProduct();
-					}
-					else {
-						alert("Cannot save product...");
-					}
-				});
+						else {
+							alert("Cannot save product...");
+						}
+					});
+				}
 				//console.log($scope.product, $scope.frmNewProduct);
 			},
 			routeToProduct : function () {

@@ -35,4 +35,10 @@ public class TestCategoryDao extends AbstractContextTest {
 	public void getall() {
 		printJson(categoryDao.getAll());
 	}
+	
+	@Test
+	@Transactional
+	public void getByName4() {
+		printJson(categoryDao.getByCategoryName("test a"));
+	}
 }	

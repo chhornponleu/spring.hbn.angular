@@ -13,6 +13,10 @@ app.controllers = $.extend(module, {
 				if(confirm("Are you sure to clear cart?")) {
 					myCartService.removeAll();
 					rootScope.cart.count = myCartService.count();
+					return true;
+				}
+				else {
+					return false;
 				}
 			}
 		}

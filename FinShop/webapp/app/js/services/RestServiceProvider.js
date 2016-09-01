@@ -33,7 +33,8 @@
                 		
 	                }),
                 	orders : defineResource('/orders/:orderId', {orderId: '@id'}, {
-                		
+                		getPaging: {method: 'POST', url : baseUrl+'/orders/paging'},
+                		setPaid: { method : 'POST', url : baseUrl+'/orders/set-paid'}
 	                })
 	            }
 			}];

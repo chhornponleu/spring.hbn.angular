@@ -1,0 +1,18 @@
+{
+	"app_name": "<b>FIN</b> POS",
+	"menu": {
+		"cart" : "កន្ត្រក",
+		"dashboard": "",
+		"product" : "",
+		"order" : ""
+	},
+	"button": {
+		"no": "",
+		"ok": "",
+		"yes": ""
+	},
+	"label": {
+	},
+	"common": {
+	}
+}

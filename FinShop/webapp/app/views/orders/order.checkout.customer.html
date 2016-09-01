@@ -1,6 +1,8 @@
 <div class="container-dash" ng-controller="OrderCheckoutCustomerController">
 	<form name="frmCustomerInfo" ng-submit="events.nextStep(frmCustomerInfo.$valid)" novalidate="novalidate">
-		<section class="content-header">Order Checkout Customer</section>
+		<section class="content-header">
+			<h4 translate="header.customerInfo"></h4>
+		</section>
 		<section class="content">
 			<div class="box box-info">
 				<div class="box-body">
@@ -8,14 +10,15 @@
 						<div class="form-group col-md-6">
 							<div class="checkbox">
 		                      	<label>
-		                        	<input name="isReturned" ng-model="customer.isReturned" ng-change="events.returnedCustChanged()" type="checkbox"> This is returned customer
+		                        	<input name="isReturned" ng-model="customer.isReturned" ng-change="events.returnedCustChanged()" type="checkbox"> 
+		                        	<span translate="label.returnedCustomer"></span>
 		                      	</label>
 		  					</div>
 						</div>
 					</div>
 					<div class="row" ng-show="customer.isReturned">
 						<div class="form-group col-md-6 with-border">
-		                  	<label for="customerName">Search</label>
+		                  	<label for="customerName" translate="label.search"></label>
 		                  	<ui-select ng-model="customer.id" theme="bootstrap" on-select="events.returnCustomerSelected($item, $model)">
 				            	<ui-select-match placeholder="Search">
 				            		{{$select.selected.customerName}}, {{$select.selected.contact}}
@@ -31,23 +34,32 @@
 		         	</div>
 					<div class="row">
 						<div class="form-group col-md-6">
-		                  <label for="customerName">Customer name</label>
+		                  <label for="customerName" translate="label.customerName"></label>
 		                  <input name="customerName" ng-model="customer.customerName" id="customerName" type="text" class="form-control" placeholder="Customer name" required="required" maxlength="128">
 		                </div>
 		                <div class="form-group col-md-6">
-		                  <label for="contact">Contact</label>
+		                  <label for="contact" translate="label.contact"></label>
 		                  <input name="contact" ng-model="customer.contact" id="contact" type="text" class="form-control" placeholder="Contact" required="required" maxlength="27">
 		                </div>
 		                <div class="form-group col-md-12">
-		                  <label for="address">Address</label>
+		                  <label for="address" translate="label.address"></label>
 		                  <input name="address" ng-model="customer.address" id="address" type="text" class="form-control" placeholder="Address" maxlength="254">
 		                </div>
 		            </div>  
 				</div>
 				<div class="box-footer">
-					<button type="button" onclick="history.go(-1)" class="btn btn-success"> <i class="fa fa-chevron-left"></i> Back</button>
-					<button type="button" ng-click="events.clearForm(true)" class="btn btn-warning">Clear <i class="fa fa-refresh"></i></button>
-					<button type="submit" class="btn btn-success">Save & Next <i class="fa fa-chevron-right"></i></button>
+					<button type="button" onclick="history.go(-1)" class="btn btn-success"> 
+						<i class="fa fa-chevron-left"></i>  
+						<span translate="button.back"></span> 
+					</button>
+					<button type="button" ng-click="events.clearForm(true)" class="btn btn-warning">
+						<span translate="button.clear"></span> 
+						<i class="fa fa-refresh"></i>
+					</button>
+					<button type="submit" class="btn btn-success">
+						<span translate="button.next"></span> 
+						<i class="fa fa-chevron-right"></i>
+					</button>
 				</div>
 			</div>
 		</section>
