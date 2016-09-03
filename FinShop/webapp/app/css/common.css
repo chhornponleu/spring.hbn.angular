@@ -1,7 +1,11 @@
 .main-header .logo {
 	border-right: none !important;
 }
-.fixed .main-sidebar, .fixed .left-side{background:#fff;}
+
+.fixed .main-sidebar, .fixed .left-side {
+	background: #fff;
+}
+
 .navbar-nav>.user-menu>.dropdown-menu>li.user-header {
 	height: 185px;
 }
@@ -30,6 +34,10 @@
 	margin: 0;
 }
 
+.btn-pill {
+	border-radius: 20px
+}
+
 .select-box {
 	background: #fff;
 	position: relative;
@@ -41,39 +49,48 @@
 	position: absolute;
 	right: -9px;
 	top: -27px;
-	padding: 0 4px;
+	padding: 5px 7px;
 	color: #fff;
+	border-radius: 35px;
 	opacity: 1;
 }
 
-/** Product List **/
-.product-list {
-	margin-bottom: 0;
-	padding: 10px;
-	border-radius: 3px;
-}
-
-.product-image:before {
-	content: " ";
-	
-}
-
-.product-image {
-	max-width: 100%;
-	max-height: 100%;
-}
-
-.product-category {
-	position: absolute;
-	top: 2px;
-	left: 20px;
-}
-
-.product-name {
-	max-height: 44px;
-	overflow: hidden;
-}
 /** Angular form **/
 .ng-submitted .ng-invalid {
 	border-color: red;
+}
+/** Angular Grid Pinterest **/
+.grid {
+	border: 1px solid #cccccc;
+	list-style: none;
+	background: #ffffff;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-transition: all 0.6s ease-out;
+	transition: all 0.6s ease-out;
+}
+
+.grid-label {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+.grid-img {
+	width: 100%;
+	vertical-align: middle;
+	-webkit-transition: opacity 0.6s ease-out;
+	transition: opacity 0.6s ease-out;
+	background-color: #fff;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.grid-description {
+	padding: 10px;
+}
+
+.grid-img.img-loaded {
+	visibility: visible;
+	opacity: 1;
 }

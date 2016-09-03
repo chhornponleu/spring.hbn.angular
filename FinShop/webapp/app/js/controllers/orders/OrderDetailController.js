@@ -1,7 +1,7 @@
 (function(module) {
 
 app.controllers = $.extend(module, {
-	OrderDetailController : function ($scope, $rootScope, $routeParams, $timeout, restServiceProvider) { 
+	OrderDetailController : function ($scope, $rootScope, $routeParams, $timeout, restServiceProvider, angularGridInstance) { 
 		var orderId = $routeParams.orderId;
 		
 		$scope.events = {
@@ -16,14 +16,19 @@ app.controllers = $.extend(module, {
 				restServiceProvider.orders.setPaid({id : $scope.order.id}, function (resp) {
 					if(resp && resp.header && resp.header.result) {
 						$scope.order.status = 'SA';
+						$scope.order.paidAmount = $scope.order.totalAmount - $scope.order.discountAmount;
 					}
 					else {
 						alert('Something wrong happened. Please contact System Administrator.');
 					}
+					
 				}, function () {
 					alert('Ooop....');
 				});
-			}
+			},
+			refreshGrid : function(){
+	            angularGridInstance.gallery.refresh();
+	        }
 		};
 		
 		restServiceProvider.orders.get({orderId:orderId}, function (resp) {
@@ -67,7 +72,8 @@ app.controllers = $.extend(module, {
 	}
 });
 
-app.ng.application.controller('OrderDetailController', ['$scope', '$rootScope', '$routeParams', '$timeout', 'restServiceProvider', app.controllers.OrderDetailController]).run(function () {
+app.ng.application.controller('OrderDetailController', ['$scope', '$rootScope', '$routeParams', '$timeout', 
+                                                        'restServiceProvider', 'angularGridInstance', app.controllers.OrderDetailController]).run(function () {
 	console.info('Welcome controller has been initialized');
 });
 

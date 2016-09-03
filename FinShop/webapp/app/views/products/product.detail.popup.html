@@ -1,7 +1,11 @@
 <div class="modal-body">
 	<div class="row">
 		<div class="">
+			
 			<img class="img-thumbnail no-border col-md-8" alt="{{product.productName}}" ng-src="images/products/{{product.imageName}}">
+			<span class="grid-label">
+				<span class="badge bg-red">{{product.category.categoryName}}</span>
+			</span>
 		</div>
 		<div class="col-md-4">
 			<span ng-click="events.dismiss()" class="close badge btn-close-dialog"><i class="fa fa-close"></i></span>
@@ -15,8 +19,12 @@
 				</span>
 			<p>
 			<hr>
-			<button ng-show="isInCart" ng-click="events.removeFromCart()" class="btn btn-info"><i class="fa fa-remove"></i> Remove from cart</button>
-			<button ng-hide="isInCart" ng-click="events.addToCart()" class="btn btn-info"><i class="fa fa-cart-plus"></i>  Add to cart	</button>
+			<button ng-show="isInCart" ng-click="events.removeFromCart()" class="btn btn-info btn-pill">
+				<i class="fa fa-remove"></i> <span translate="button.removeFromCart"></span>
+			</button>
+			<button ng-hide="isInCart" ng-click="events.addToCart()" class="btn btn-info btn-pill">
+				<i class="fa fa-cart-plus"></i>  <span translate="button.addToCart"></span>
+			</button>
 		</div>
 	</div>
 </div>

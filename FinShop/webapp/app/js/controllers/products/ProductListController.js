@@ -1,7 +1,7 @@
 (function(module) {
 
 app.controllers = $.extend(module, {
-	ProductListController : function ($scope, $rootScope, $uibModal, restServiceProvider, pagingConfig) { 
+	ProductListController : function ($scope, $rootScope, $uibModal, restServiceProvider, pagingConfig, myCartService) { 
 		var searchTimeout = undefined;
 		
 		$scope.data = {
@@ -27,6 +27,9 @@ app.controllers = $.extend(module, {
 					console.log($scope.data)
 					reloadProductList();
 				}, 800);
+			},
+			addToCart : function () {
+				myCartService.add($scope.product);
 			}
 		};
 		
@@ -71,7 +74,7 @@ app.controllers = $.extend(module, {
 	}
 });
 
-app.ng.application.controller('ProductListController', ['$scope', '$rootScope', '$uibModal', 'restServiceProvider', 'pagingConfig', app.controllers.ProductListController]).run(function () {
+app.ng.application.controller('ProductListController', ['$scope', '$rootScope', '$uibModal', 'restServiceProvider', 'pagingConfig', 'myCartService', app.controllers.ProductListController]).run(function () {
 	console.info('Welcome controller has been initialized');
 });
 
