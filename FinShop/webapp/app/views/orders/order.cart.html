@@ -1,6 +1,9 @@
 <div class="container-dash" ng-controller="OrderCartController">
 	<section class="content-header">
-	  	<button ng-click="events.clearCart()" type="button" class="btn btn-warning pull-right" translate="button.clear"></button>
+	  	<button ng-click="events.clearCart()" type="button" class="btn btn-warning btn-pill btn-sm pull-right">
+	  		<i class="fa fa-refresh"></i>
+	  		<span translate="button.clearAll"></span>
+	  	</button>
 	  	<h4 translate="header.cart"></h4>
 	</section>
 	<section class="content">
@@ -12,7 +15,7 @@
 				<div class="row product-list" ng-repeat="pro in products">
 					<div class="col-xs-3 col-lg-2">
 						<div class="product-image">
-							<img ng-src="images/products/{{pro.imageName}}" class="img-responsive">
+							<img ng-src="images/products/{{pro.imageName}}" class="img-thumbnail img-responsive">
 						</div>
 					</div>
 					<div class="col-xs-9 col-lg-10">
@@ -22,13 +25,12 @@
 						<span class="badge bg-blue" ng-repeat="attr in pro.attributes" style="margin-right:5px;">
 							{{attr.id.attribute.attributeName}}
 						</span>
-						<hr>
 					</div>
-					
+					<div class="col-xs-12" ng-hide="{{$last}}"><hr></div>
 				</div>
 			</div>
 			<div class="box-footer">
-				<a href="#!orders/checkout/customer" class="btn btn-success btn-pill">
+				<a href="#!orders/checkout/customer" class="btn btn-success btn-sm btn-pill">
 					<span  translate="button.next"></span> 
 					<i class="fa fa-chevron-right"></i> 
 				</a>

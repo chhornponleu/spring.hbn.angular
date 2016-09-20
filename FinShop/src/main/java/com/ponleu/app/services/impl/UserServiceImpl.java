@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
 	private static final Logger logger = Logger.getLogger(UserServiceImpl.class);
 
 	@Inject
-	UserDao userDao;
+	private UserDao userDao;
 
 	@Override
 	public User getByUsername(String username) {
@@ -25,9 +25,32 @@ public class UserServiceImpl implements UserService {
 		try {
 			user = userDao.getByUsername(username);
 		} catch (HibernateException e) {
-			logger.error("Error getting user " + username, e);
+			logger.error("Error getting user by name " + username, e);
 		}
 		return user;
+	}
+
+	@Override
+	public User getByUserId(Integer userId) {
+		User user = null;
+		try {
+			user = userDao.get(userId);
+		} catch (HibernateException e) {
+			logger.error("Error getting user by id " + userId, e);
+		}
+		return user;
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public boolean update(User user) {
+		boolean result = true;
+		try {
+			userDao.update(user);
+		} catch (HibernateException e) {
+			logger.error("Error updating user " + user.getId(), e);
+		}
+		return result;
 	}
 
 }

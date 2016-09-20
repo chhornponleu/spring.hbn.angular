@@ -9,4 +9,5 @@ import com.ponleu.app.generics.GenericDao;
 public interface OrderDao extends GenericDao<Order> {
 	public Long count(Order search);
 	public List<Order> getPagination(OrderPagingRequest pagingRequest);
+	public List<Order> getByStatus(String status);
 }

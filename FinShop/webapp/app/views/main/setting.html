@@ -1,0 +1,26 @@
+<div class="container-dash" ng-controller="SettingController">
+	<section class="content-header">
+		<h4 translate="menu.setting"></h4>
+	</section>
+	<section class="content">
+		<form name="frmProfile"
+			ng-submit="events.submitSave(frmProfile.$valid)"
+			novalidate="novalidate">
+			<div class="box box-info">
+				<div class="box-body">
+					<div class="form-group row">
+						<div class="col-xs-3" translate="label.language"></div>
+						<div class="col-xs-9">
+							<button ng-class="{'btn-success' : currentLanguage == 'kh'}" class="btn btn-xs btn-pill" ng-click="events.setLanguage('kh')" type="button">
+								<span translate="label.khmerLanguage"></span>
+							</button>
+							<button ng-class="{'btn-success' : currentLanguage == 'en'}" class="btn btn-xs btn-pill" ng-click="events.setLanguage('en')" type="button">
+								<span translate="label.englishLanguage"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</section>
+</div>

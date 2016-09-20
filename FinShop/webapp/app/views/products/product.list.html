@@ -4,23 +4,20 @@
 			<form class="form-horizontal">	
 				<div class="col-md-4">
 					<div class="input-group">
-		                <input ng-model="data.search" type="text" class="form-control" ng-change="events.reloadProduct()">
+		                <input ng-model="data.search" type="text" class="form-control input-sm pill-left" ng-change="events.reloadProduct()">
 	                    <span class="input-group-btn">
-	                      <button type="button" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
+	                      <button type="button" class="btn btn-info btn-sm pill-right"><i class="fa fa-search"></i></button>
 	                    </span>
               		</div>
               	</div>
              		<div class="col-md-4">
-             			<a href="#!products/addNew" class="btn btn-info btn-pill">
+             			<a href="#!products/addNew" class="btn btn-info btn-sm btn-pill">
 						<i class="fa fa-plus"></i> <span translate="button.addProduct"></span>
 					</a>
              		</div>
 			</form>
 		</div>
 	</div>
-	<!-- <section class="content-header">
-	  	<h4>Product List</h4>
-	</section> -->
 
 	<section class="content">
 		<ul angular-grid="data.products" ag-grid-width="220">
@@ -36,7 +33,7 @@
 		</ul>
 		<div class="row">
 			<div class="col-xs-12">
-				<ul uib-pagination total-items="pagingConfig.total" items-per-page="pagingConfig.pageSize" ng-model="pagingConfig.page" ng-change="events.pageChanged()"></ul>
+				<ul uib-pagination total-items="pagingConfig.total" items-per-page="pagingConfig.pageSize" ng-model="pagingConfig.page" previous-text="<" next-text=">" ng-change="events.pageChanged()"></ul>
 			</div>
 		</div>
 	</section>

@@ -1,22 +1,19 @@
 <div class="container-dash" ng-controller="NewProductController">
 	<section class="content-header">
-	  	<h4>New Product</h4>
+	  	<h4 translate="header.addProduct"></h4>
 	</section>
 	<section class="content">
 		<form name="frmNewProduct" ng-submit="events.submitSave(frmNewProduct.$valid)" novalidate="novalidate"> 
 			<div class="box box-info">
-				<div class="box-header">
-					<h3 class="box-title">Product Info</h3>
-				</div>
 				<div class="box-body">
 					<div class="form-group">
-						<label for="productName">Product Name: </label> 
-						<input name="productName" ng-model="product.productName" id="productName" required="required" type="text" class="form-control" placeholder="Product name">
+						<label for="productName" translate="label.productName"></label> 
+						<input name="productName" ng-model="product.productName" id="productName" required="required" type="text" class="form-control">
 					</div>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="categoryId"> Category
+								<label for="categoryId"> <span translate="label.category"></span>
 									<a ng-click="events.addCategory()" class="btn btn-xs btn-link" href="javascript:void(0);" class="pull-right"> 
 										<i class="fa fa-plus"></i>
 									</a> 
@@ -29,7 +26,7 @@
 					          	</ui-select>
 							</div>
 							<div class="form-group">
-								<label for="attributes"> Attributes
+								<label for="attributes"> <span translate="label.attribute"></span>
 									<a ng-click="events.addAttribute()" class="btn btn-xs btn-link" href="javascript:void(0);" class="pull-right"> 
 										<i class="fa fa-plus"></i>
 									</a>
@@ -42,13 +39,13 @@
 					          	</ui-select>
 							</div>
 							<div class="form-group">
-								<label for="productDescription">Product Description </label> 
-								<textarea name="productDescription" ng-model="product.productDescription" id="productDescription" rows="3" class="form-control" placeholder="Product Description"></textarea>
+								<label for="productDescription" translate="label.description"></label> 
+								<textarea name="productDescription" ng-model="product.productDescription" id="productDescription" rows="3" class="form-control"></textarea>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="imageName">Product Image: </label> 
+								<label for="imageName" translate="label.image"></label> 
 								<input name="imageName" id="imageName" ng-model="product.imageName" ng-model-data="product.imageFileBase64" input-img-preview="preview-image" accept="image/*" type="file" class="form-control">
 							</div>
 							<div class="form-group" style="max-width:200px;max-height:200px;">
@@ -58,8 +55,12 @@
 					</div>
 				</div>
 				<div class="box-footer">
-					<button type="button" ng-click="events.back()" class="btn btn-success"><small><i class="fa fa-arrow-left"></i></small> Cancel</button>
-					<button type="submit" class="btn btn-success"><small><i class="fa fa-save"></i></small> Save</button>
+					<button type="button" onclick="history.go(-1)" class="btn btn-success btn-sm btn-pill">
+						<small><i class="fa fa-arrow-left"></i></small> <span translate="button.cancel"></span>
+					</button>
+					<button type="submit" class="btn btn-success btn-sm btn-pill">
+						<small><i class="fa fa-save"></i></small> <span translate="button.save"></span> 
+					</button>
 				</div>
 			</div>
 		</form>

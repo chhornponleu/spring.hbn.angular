@@ -115,7 +115,7 @@ public class DataSourceConfig {
 		properties.put("hibernate.generate_statistics", this.env.getProperty("datasource.hibernate.generate_statistics"));
 		properties.put("hibernate.connection.characterEncoding", "UTF-8");
 		properties.put("hibernate.connection.charSet", "UTF-8");
-		//properties.put("hibernate.hbm2ddl.auto", "validate");
+		//properties.put("hibernate.hbm2ddl.auto", "create");
 		return properties;
 	}
 

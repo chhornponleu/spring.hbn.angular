@@ -35,7 +35,16 @@
 }
 
 .btn-pill {
-	border-radius: 20px
+	border-radius: 20px;
+	outline: none !important;
+}
+.pill-right {
+	border-radius: 0 20px 20px 0;
+	outline: none !important;
+}
+.pill-left {
+	border-radius: 20px 0 0 20px;
+	outline: none !important;
 }
 
 .select-box {

@@ -3,7 +3,8 @@
 		<div class="row">
 		  	<div class="col-md-12">
 				<a href="#!/products/addNew" class="btn btn-app bg-green">
-					<i class="fa fa-cart-plus"></i> Add Product
+					<i class="fa fa-cart-plus"></i> 
+					<span translate="button.addProduct"></span>
 				</a>
 			</div>
 	  	</div>
@@ -14,29 +15,45 @@
 		<div class="col-md-12">
           	<div class="box">
 	            <div class="box-header with-border">
-	              <h3 class="box-title">Recent Orders</h3>
-	
-	              <div class="box-tools pull-right">
-	                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-link"></i></button>
-	              </div>
+	              	<h3 class="box-title" translate="label.pendingOrder"></h3>
+	              	<div class="box-tools pull-right">
+						<a href="#!/orders" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-link"></i></a>
+	              	</div>
 	            </div>
 	            <div class="box-body">
 					<div class="row">
-						<div class="col-md-12">
-							<p class="text-center">
-								<strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-							</p>
+						<div class="box-body">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th translate="label.id"></th>
+										<th translate="label.customer"></th>
+										<th translate="label.contact"></th>
+										<th translate="label.orderDate">Order Date</th>
+										<th translate="label.pickupDate">Pickup Date</th>
+										<th translate="label.totalAmount">Total Amount</th>
+										<th translate="label.paid">Paid Amount</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="order in orders">
+										<td>#{{order.id}}</td>
+										<td>{{order.customer.customerName}}</td>
+										<td>{{order.customer.contact}}</td>
+										<td>{{order.orderDate | date : 'dd-MM-yyyy'}}</td>
+										<td>{{order.pickupDate | date : 'dd-MM-yyyy'}}</td>
+										<td>{{order.totalAmount}}</td>
+										<td>{{order.paidAmount}}</td>
+										<td><span ng-click="events.showOrderDetail(order.id)" class="badge bg-blue" translate="label.view">View</span></td>
+									</tr>
+								</tbody>	
+							</table>
 						</div>
+
 					</div>
 					<div class="box-footer">
-						<div class="row">
-							<div class="col-sm-3 col-xs-6">
-								<div class="description-block border-right">
-									<h5 class="description-header">$35,210.43</h5>
-									<span class="description-text">TOTAL ORDER THIS MONTH</span>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>
         	</div>

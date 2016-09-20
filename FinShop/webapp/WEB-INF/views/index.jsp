@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
   		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  		<title></title>
   		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  		
+  		<title></title>
 
-		<%-- <link rel="stylesheet" href="${baseUrl}app/bower_components/select2/dist/css/select2.css"> --%>
 		<link rel="stylesheet" href="${baseUrl}app/bower_components/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="${baseUrl}app/bower_components/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="${baseUrl}app/bower_components/Ionicons/css/ionicons.min.css">
@@ -53,7 +53,7 @@
 								</a>
 							</li>
 							<li class="dropdown user user-menu">
-				            	<a href="#!/user/profile" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+				            	<a href="#!/users/profile" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 				              		<i class="fa fa-user"></i> 
 					              	<span class="hidden-xs" translate="menu.profile"></span>
 				            	</a>
@@ -81,10 +81,12 @@
 						<li class="treeview">
 							<a href="#!/orders"><i class="fa fa-get-pocket"></i><span translate="menu.order"></span></a>
 						</li>
+						<li class="treeview">
+							<a href="#!/setting"><i class="fa fa-gear"></i><span translate="menu.setting"></span></a>
+						</li>
 					</ul>
 				</section>
 			</aside>
-
 
 			<div class="content-wrapper" style="min-height:700px;">
 				<div ng-view></div>

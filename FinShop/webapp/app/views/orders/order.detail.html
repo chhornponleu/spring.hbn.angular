@@ -2,11 +2,11 @@
 	<div class="box no-border hidden-print">
 		<div class="box-header with-border">
        		<div class="col-md-12">
-       			<button class="btn btn-success pull-right" ng-click="events.print()">
-					<i class="fa fa-print"></i>  Print
+       			<button class="btn btn-success btn-sm btn-pill pull-right" ng-click="events.print()">
+					<i class="fa fa-print"></i>  <span translate="label.print"></span>
 				</button>
-				<button ng-show="order.status == 'SP'" class="btn btn-warning pull-right" ng-click="events.orderPaid()" style="margin-right:10px;">
-					<i class="fa fa-check-square-o"></i>  Paid 
+				<button ng-show="order.status == 'SP'" class="btn btn-warning btn-sm btn-pill pull-right" ng-click="events.orderPaid()" style="margin-right:10px;">
+					<i class="fa fa-check-square-o"></i>  <span translate="label.paid"></span> 
 				</button>
   			</div>
 		</div>

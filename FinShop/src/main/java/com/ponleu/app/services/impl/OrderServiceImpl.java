@@ -26,10 +26,10 @@ import com.ponleu.app.services.OrderService;
 public class OrderServiceImpl implements OrderService {
 
 	private static final Logger LOGGER = Logger.getLogger(OrderServiceImpl.class);
-	
+
 	@Inject
 	private OrderDao orderDao;
-	
+
 	@Override
 	@Transactional(readOnly = false)
 	public boolean save(Order order) {
@@ -41,8 +41,7 @@ public class OrderServiceImpl implements OrderService {
 			order.setOrderDate(new Date());
 			order.setStatus(StatusEnum.STATUS_PENDING);
 			orderDao.save(order);
-		}
-		catch(HibernateException | NullPointerException e ) {
+		} catch (HibernateException | NullPointerException e) {
 			LOGGER.error("Error saving product : " + order.toString(), e);
 			result = false;
 		}
@@ -55,8 +54,7 @@ public class OrderServiceImpl implements OrderService {
 		try {
 			order = orderDao.get(orderId);
 			Hibernate.initialize(order.getOrderDetails());
-		}
-		catch(HibernateException e) {
+		} catch (HibernateException e) {
 			order = null;
 		}
 		return order;
@@ -68,21 +66,20 @@ public class OrderServiceImpl implements OrderService {
 		Long total = 0L;
 		try {
 			total = orderDao.count(pagingRequest.getSearch());
-			if(total > 0L) {
+			if (total > 0L) {
 				orders = orderDao.getPagination(pagingRequest);
 			}
-		}
-		catch (HibernateException e) {
+		} catch (HibernateException e) {
 			LOGGER.error("Cannot paginate order: " + pagingRequest.toString(), e);
 		}
 		OrderPagingResponse resp = new OrderPagingResponse();
 		resp.setData(orders);
 		resp.setTotal(total);
 		resp.setPage(pagingRequest.getPage());
-		resp.setPageSize(pagingRequest.getPageSize()); 
-		
+		resp.setPageSize(pagingRequest.getPageSize());
+
 		return resp;
-		
+
 	}
 
 	@Override
@@ -91,23 +88,32 @@ public class OrderServiceImpl implements OrderService {
 		boolean result = true;
 		try {
 			Order order = orderDao.get(orderId);
-			if(order == null) {
+			if (order == null) {
 				result = false;
-			}
-			else {
+			} else {
 				order.setStatus(StatusEnum.STATUS_ACTIVE);
 				BigDecimal discount = order.getDiscountAmount();
-				if(discount == null) {
+				if (discount == null) {
 					discount = BigDecimal.ZERO;
 				}
-				order.setPaidAmount(order.getTotalAmount().subtract(discount)); 
-				orderDao.update(order); 
+				order.setPaidAmount(order.getTotalAmount().subtract(discount));
+				orderDao.update(order);
 			}
-		}
-		catch(HibernateException e) {
+		} catch (HibernateException e) {
 			result = false;
 		}
 		return result;
+	}
+
+	@Override
+	public List<Order> getUnPaidOrders() {
+		List<Order> orders = new ArrayList<>();
+		try {
+			orders = orderDao.getByStatus(StatusEnum.STATUS_PENDING);
+		} catch (HibernateException e) {
+			LOGGER.error("Cannot getting upaid order", e);
+		}
+		return orders;
 	}
 
 }

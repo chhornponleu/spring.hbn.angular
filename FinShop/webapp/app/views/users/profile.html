@@ -1,0 +1,47 @@
+<div class="container-dash" ng-controller="UserProfileController">
+	<section class="content-header">
+		<h4 translate="menu.profile"></h4>
+	</section>
+	<section class="content">
+		<form name="frmProfile"
+			ng-submit="events.submitSave(frmProfile.$valid)"
+			novalidate="novalidate">
+			<div class="box box-info">
+				<div class="box-body">
+					<div class="form-group row">
+						<div class="col-xs-3" translate="label.name"></div>
+						<div class="col-xs-9">{{user.firstName | uppercase}}  {{user.lastName | uppercase}} </div>
+					</div>
+					<div class="form-group row">
+						<div class="col-xs-3" translate="label.gender"></div>
+						<div class="col-xs-9">
+							<span translate="label.male" ng-show="user.gender == 'M'"></span>
+							<span translate="label.female"  ng-show="user.gender == 'F'"></span>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-xs-3" translate="label.contact"></div>
+						<div class="col-xs-5">
+							<input ng-model="user.phoneNumber" required="required" type="text" class="form-control input-sm">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-xs-3" translate="label.username"></div>
+						<div class="col-xs-9">{{user.userAccess.username}} </div>
+					</div>
+					<div class="form-group row">
+						<div class="col-xs-3" translate="label.newPassword"></div>
+						<div class="col-xs-5">
+							<input ng-model="user.userAccess.password" type="password" class="form-control input-sm">
+						</div>
+					</div>
+				</div>
+				<div class="box-footer">
+					<button type="submit" class="btn btn-success btn-pill">
+						<small><i class="fa fa-save"></i></small> <span translate="button.save"></span>
+					</button>
+				</div>
+			</div>
+		</form>
+	</section>
+</div>

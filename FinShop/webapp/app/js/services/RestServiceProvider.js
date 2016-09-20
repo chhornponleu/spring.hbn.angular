@@ -34,8 +34,12 @@
 	                }),
                 	orders : defineResource('/orders/:orderId', {orderId: '@id'}, {
                 		getPaging: {method: 'POST', url : baseUrl+'/orders/paging'},
-                		setPaid: { method : 'POST', url : baseUrl+'/orders/set-paid'}
-	                })
+                		setPaid: { method : 'POST', url : baseUrl+'/orders/set-paid'},
+                		getUnpaid : { method : 'GET', url : baseUrl+'/orders/unpaid'}
+	                }),
+	                users : defineResource('/users/:userId', {userId: '@id'}, {
+                		getProfile: {method: 'GET', url : baseUrl+'/users/profile'},
+	                }),
 	            }
 			}];
 			

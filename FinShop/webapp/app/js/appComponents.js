@@ -8,6 +8,7 @@ define([ 'jquery', 'app' ], function() {
 		    'main/RootController',
 		    'main/LoginController',
 		    'main/DashboardController',
+		    'main/SettingController',
 		    
 		    'orders/OrderListController',
 		    'orders/OrderCartController',
@@ -20,7 +21,10 @@ define([ 'jquery', 'app' ], function() {
 		    'products/ProductDetailPopupController',
 		    
 		    'categories/NewCategoryPopupController',
-		    'attributes/NewAttributePopupController'
+		    'attributes/NewAttributePopupController',
+		    
+		    'users/UserProfileController'
+		    
 	    ],
 	    filters : [],
 	    directives : [

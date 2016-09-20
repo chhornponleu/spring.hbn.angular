@@ -16,6 +16,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "user_accesses")
@@ -32,6 +34,7 @@ public class UserAccess implements Serializable {
 	private String username;
 
 	@Column(name = "PASSWORD", nullable = false, length = 128)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 
 	@Column(name = "ROLE", length = 10)
@@ -45,7 +48,7 @@ public class UserAccess implements Serializable {
 	private Date createdDate;
 
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name="USER_ID")
+	@JoinColumn(name = "USER_ID")
 	@JsonBackReference
 	private User user;
 

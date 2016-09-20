@@ -53,7 +53,8 @@ app.controllers = $.extend(module, {
 		function buildOrderObject() {
 			var order = orderTpl;
 			
-			order.pickupDate = new Date();
+			order.orderDate = new Date();
+			order.pickupDate = new Date(order.orderDate.getTime() + 7 * 24 * 60 * 60 * 1000);
 			order.totalAmount = getTotalAmount();
 			order.paidAmount = $scope.order.paidAmount,
 			order.discountAmount = $scope.order.discountAmount || 0;

@@ -1,17 +1,65 @@
 {
 	"app_name": "<b>FIN</b> POS",
 	"menu": {
-		"cart" : "កន្ត្រក",
-		"dashboard": "",
-		"product" : "",
-		"order" : ""
+		"cart" : "Cart",
+		"dashboard": "Dashboard",
+		"profile" : "Profile",
+		"product" : "Product",
+		"order" : "Order",
+		"setting" : "Setting"
+	},
+	"header" : {
+		"addProduct" : "Add Product",
+		"cart" : "Customer Cart",
+		"customerInfo" : "Customer Information"
 	},
 	"button": {
-		"no": "",
-		"ok": "",
-		"yes": ""
+		"addProduct" : "Add Product",
+		"addToCart" : "Add to Cart",
+		"back" : "Back",
+		"cancel" : "Cancel",
+		"clear" : "Clear",
+		"clearAll" : "Clear All", 
+		"no": "No",
+		"ok": "Okay",
+		"next" : "Next",
+		"removeFromCart" : "Remove from Cart",
+		"save" : "Save",
+		"yes": "Yes"
 	},
 	"label": {
+		"address" : "Address",
+		"attribute" : "Attribute",
+		"category" : "Category",
+		"contact" : "Contact",
+		"customer" : "Customer",
+		"customerName" : "Customer Name",
+		"description" : "Description",
+		"englishLanguage" : "English",
+		"gender" : "Gemder",
+		"male" : "Male",
+		"female" : "Female",
+		"id" : "ID",
+		"image" : "Image",
+		"khmerLanguage" : "ភាសាខ្មែរ",
+		"language" : "Language",
+		"name" : "Name",
+		"newPassword" : "New Password្មី",
+		"next" : "Next",
+		"oldPassword" : "Old Password",
+		"order" : "Order",
+		"orderDate" : "Order Date",
+		"paid" : "Paid",
+		"pendingOrder" : "Pending Order",
+		"pickupDate" : "Pickup Date",
+		"print" : "Print",
+		"productName": "Product Name",
+		"returnedCustomer" : "Return Customer",
+		"saveAndNext" : "Save and Next",
+		"search" : "Search",
+		"totalAmount" : "Total Amount",
+		"username" : "User Name",
+		"view" : "View"
 	},
 	"common": {
 	}

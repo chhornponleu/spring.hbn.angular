@@ -40,6 +40,16 @@
             	templateUrl : 'app/views/products/product.addNew.html'
             })
             
+            // Users
+            .when('/users/profile', {
+            	templateUrl : 'app/views/users/profile.html'
+            })
+            
+            // Setting
+            .when('/setting', {
+            	templateUrl : 'app/views/main/setting.html'
+            })
+            
             // Others
             .when('/404', {
             	templateUrl : 'app/views/404.html'

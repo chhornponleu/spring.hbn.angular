@@ -5,9 +5,11 @@
 		"dashboard": "ទំព័រមុខ",
 		"profile" : "ព័ត៌មាន​ផ្ទាល់ខ្លួន",
 		"product" : "ផលិតផល",
-		"order" : "ការបញ្ជាទិញ"
+		"order" : "ការបញ្ជាទិញ",
+		"setting" : "ការកំណត់"
 	},
 	"header" : {
+		"addProduct" : "បន្ថែមផលិតផល",
 		"cart" : "កន្ត្រកទំនិញរបស់អ្នក",
 		"customerInfo" : "ពត៌មានអតិថិជន"
 	},
@@ -15,7 +17,9 @@
 		"addProduct" : "បន្ថែមផលិតផល",
 		"addToCart" : "ដាក់ក្នុងកន្ត្រក",
 		"back" : "ត្រឡប់ក្រោយ",
+		"cancel" : "បោះបង់ចោល",
 		"clear" : "លុបចោល",
+		"clearAll" : "លុបចោលទាំងអស់", 
 		"no": "ទេ",
 		"ok": "យល់ព្រម",
 		"next" : "បន្ទាប់ទៀត",
@@ -25,13 +29,37 @@
 	},
 	"label": {
 		"address" : "អាសយដ្ឋាន",
+		"attribute" : "សមាសភាគផ្សំ",
+		"category" : "ប្រភេទ",
 		"contact" : "លេខទំនាក់​ទំនង",
 		"customer" : "អតិថិជន",
 		"customerName" : "ឈ្មោះ​អតិថិជន",
+		"description" : "បរិយាយ",
+		"englishLanguage" : "English",
+		"gender" : "ភេទ",
+		"male" : "ប្រុស",
+		"female" : "ស្រី",
+		"id" : "លេខសម្គាល់",
+		"image" : "រូបភាព",
+		"khmerLanguage" : "ភាសាខ្មែរ",
+		"language" : "ភាសា",
+		"name" : "ឈ្មោះ",
+		"newPassword" : "ពាក្យសម្ងាត់​ថ្មី",
 		"next" : "បន្ទាប់​ទៀត",
+		"oldPassword" : "ពាក្យសម្ងាត់ចាស់",
+		"order" : "ការបញ្ជាទិញ",
+		"orderDate" : "កាល​បរិច្ឆេទ​បញ្ជា​ទិញ",
+		"paid" : "បាន​បង់​ប្រាក់រួច",
+		"pendingOrder" : "បញ្ជាទិញដែលមិនទាន់សម្រេច",
+		"pickupDate" : "កាលបរិច្ឆេទយក",
+		"print" : "បោះពុម្ព",
+		"productName": "ឈ្មោះ​ផលិតផល",
 		"returnedCustomer" : "អតិថិជនចាស់",
 		"saveAndNext" : "រក្សាទុកនិងបន្ទាប់​ទៀត",
-		"search" : "ការស្វែងរក"
+		"search" : "ការស្វែងរក",
+		"totalAmount" : "តម្លៃ​សរុប",
+		"username" : "ឈ្មោះ​អ្នកប្រើប្រាស់",
+		"view" : "បង្ហាញ"
 	},
 	"common": {
 	}

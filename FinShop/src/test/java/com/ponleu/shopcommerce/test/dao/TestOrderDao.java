@@ -6,6 +6,7 @@ import org.hibernate.Hibernate;
 import org.junit.Test;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ponleu.app.commons.StatusEnum;
 import com.ponleu.app.daos.OrderDao;
 import com.ponleu.app.dto.OrderPagingRequest;
 import com.ponleu.app.entities.Order;
@@ -44,4 +45,9 @@ public class TestOrderDao extends AbstractContextTest {
 		printJson(orderDao.getPagination(req));
 	}
 	
+	@Test
+	@Transactional
+	public void getByStatus() {
+		printJson(orderDao.getByStatus(StatusEnum.STATUS_ACTIVE).size());
+	}
 }	

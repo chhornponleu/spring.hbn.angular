@@ -41,12 +41,12 @@ public class User implements Serializable {
 	@Column(name = "PHONE_NUMBER")
 	private String phoneNumber;
 
-	@OneToOne(fetch = FetchType.EAGER, mappedBy = "user")
 	@JsonManagedReference
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "user")
+	@Cascade(CascadeType.SAVE_UPDATE)
 	private UserAccess userAccess;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="orderBy")
-	@Cascade(CascadeType.SAVE_UPDATE)
 	private Set<Order> orders;
 
 	public Set<Order> getOrders() {
