@@ -8,4 +8,5 @@
 	.invoice-footer {position:fixed; bottom:0;left:0;right:0;}
 	.invoice {min-height: 990px;}
 }
+.print-header h2 {font-family: "Khmer OS Muol Light", "Khmer OS Muol" }
 	

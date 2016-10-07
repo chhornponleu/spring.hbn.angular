@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ponleu</groupId>
-	<artifactId>FinShop</artifactId>
+	<artifactId>cnshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>Shop Commerce</name>
@@ -306,7 +306,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>FinShop</finalName>
+		<finalName>cnshop</finalName>
 		<plugins>
 			<!-- Compiler -->
 			<plugin>

@@ -1,4 +1,4 @@
-(function (app) {
+ (function (app) {
     var defineRoutes = function ($routeProvider, $locationProvider) {
     	$locationProvider.hashPrefix('!');
     	$locationProvider.html5Mode(false);

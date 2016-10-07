@@ -32,7 +32,7 @@
 			<header class="main-header">
 				<!-- Logo -->
 				<a href="#!/" class="logo bg-yellow">
-					<span class="logo-mini"><b>F</b>IN</span>
+					<span class="logo-mini"><b>CN</b></span>
 					<span class="logo-lg" translate="app_name"></span>
 				</a>
 				<nav class="navbar navbar-static-top" style="background-color: rgba(255, 255, 255, 0.9);">

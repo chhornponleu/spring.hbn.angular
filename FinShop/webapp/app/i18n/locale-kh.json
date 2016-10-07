@@ -1,5 +1,5 @@
 {
-	"app_name": "<b>FIN</b> POS",
+	"app_name": "<b>CN</b> Shop",
 	"menu": {
 		"cart" : "កន្ត្រក",
 		"dashboard": "ទំព័រមុខ",
@@ -29,6 +29,8 @@
 	},
 	"label": {
 		"address" : "អាសយដ្ឋាន",
+		"addAttribute" : "បន្ថែមសមាសភាគផ្សំ",
+		"addCategory" : "បន្ថែមប្រភេទទំនិញ",
 		"attribute" : "សមាសភាគផ្សំ",
 		"category" : "ប្រភេទ",
 		"contact" : "លេខទំនាក់​ទំនង",
@@ -58,6 +60,7 @@
 		"saveAndNext" : "រក្សាទុកនិងបន្ទាប់​ទៀត",
 		"search" : "ការស្វែងរក",
 		"totalAmount" : "តម្លៃ​សរុប",
+		"unit" : "ឯកតា",
 		"username" : "ឈ្មោះ​អ្នកប្រើប្រាស់",
 		"view" : "បង្ហាញ"
 	},

@@ -1,5 +1,5 @@
 {
-	"app_name": "<b>FIN</b> POS",
+	"app_name": "<b>CN</b> Shop",
 	"menu": {
 		"cart" : "Cart",
 		"dashboard": "Dashboard",
@@ -29,6 +29,8 @@
 	},
 	"label": {
 		"address" : "Address",
+		"addAttribute" : "Add Attribute",
+		"addCategory" : "Add Category",
 		"attribute" : "Attribute",
 		"category" : "Category",
 		"contact" : "Contact",
@@ -36,7 +38,7 @@
 		"customerName" : "Customer Name",
 		"description" : "Description",
 		"englishLanguage" : "English",
-		"gender" : "Gemder",
+		"gender" : "Gender",
 		"male" : "Male",
 		"female" : "Female",
 		"id" : "ID",
@@ -44,7 +46,7 @@
 		"khmerLanguage" : "ភាសាខ្មែរ",
 		"language" : "Language",
 		"name" : "Name",
-		"newPassword" : "New Password្មី",
+		"newPassword" : "New Password",
 		"next" : "Next",
 		"oldPassword" : "Old Password",
 		"order" : "Order",
@@ -58,6 +60,7 @@
 		"saveAndNext" : "Save and Next",
 		"search" : "Search",
 		"totalAmount" : "Total Amount",
+		"unit" : "Unit",
 		"username" : "User Name",
 		"view" : "View"
 	},
