@@ -1,7 +1,7 @@
 (function(module) {
 
 app.controllers = $.extend(module, {
-	NewProductController : function ($scope, $rootScope, $uibModal, restServiceProvider, $location) { 
+	NewProductController : function ($scope, $rootScope, $uibModal, restServiceProvider, $location, $translate) { 
 		$scope.data = {
 			config : {
 				attributes : [],
@@ -13,12 +13,42 @@ app.controllers = $.extend(module, {
 			category : {}
 		};
 		
+		/**
+		 * {
+		 * 		attribute : { },
+		 * 		stockAmount : 1,
+		 * 		quantity : 1
+		 * }
+		 */
+		$scope.tmpAttribute = { 
+			
+		};
+		
+		$scope.newAttributeTemplateUrl = 'newAttributeTemplate.html';
+		
 		$scope.events = {
 			addCategory : function () {
 				openAddCategoryPopup();
 			},
-			addAttribute : function () {
+			openNewAttributePopup : function () {
 				openAddAttributePopup();
+			},
+			addAttribute : function () {
+				if(!$scope.tmpAttribute.attribute) {
+					return;
+				}
+				var index = $scope.data.config.attributes.indexOf($scope.tmpAttribute.attribute);
+				$scope.product.attributes.push(angular.extend($scope.tmpAttribute,{}));
+				$scope.data.config.attributes.splice(index, 1)[0];
+				$scope.tmpAttribute = {};
+
+				console.log($scope.product.attributes);
+			},
+			removeAttribute : function (index) {
+				console.log('Removed attribute at index:' + index);
+				var attribute = $scope.product.attributes.splice(index, 1)[0];
+				console.log(attribute);
+				$scope.data.config.attributes.push(attribute.attribute);
 			},
 			submitSave : function ($valid) {
 				if($valid) {
@@ -33,9 +63,11 @@ app.controllers = $.extend(module, {
 						var attr = {
 							id : {
 								attribute : {
-									id : item.id
+									id : item.attribute.id
 								}
-							}
+							},
+							quantity : item.quantity,
+							unitPrice : item.unitPrice
 						};
 						attributes.push(attr);
 					});
@@ -90,6 +122,7 @@ app.controllers = $.extend(module, {
 			restServiceProvider.attributes.query(function (resp) {
 				if(resp.header && resp.header.result == true) {
 					$scope.data.config.attributes = resp.body;
+					console.log($scope.data.config.attributes);
 				}
 			});
 		}
@@ -98,6 +131,7 @@ app.controllers = $.extend(module, {
 			restServiceProvider.categories.query(function (resp) {
 				if(resp.header && resp.header.result == true) {
 					$scope.data.config.categories = resp.body;
+					console.log($scope.data.config.categories);
 				}
 			});
 		}

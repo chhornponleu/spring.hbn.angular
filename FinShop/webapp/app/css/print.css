@@ -1,12 +1,46 @@
-
 /** Report **/
-.table>tbody+tbody:not(:first-child){ border-top:none;}
-.print-logo {max-width:100px;}
-.color-white {color:white;}
-.print.sidebar-mini.sidebar-collapse .content-wrapper, .print .content-wrapper {margin-left: 0 !important;}
-@media print {
-	.invoice-footer {position:fixed; bottom:0;left:0;right:0;}
-	.invoice {min-height: 990px;}
+.table > tbody + tbody:not(:first-child) {
+	border-top:none;
 }
-.print-header h2 {font-family: "Khmer OS Muol Light", "Khmer OS Muol" }
-	
+.print-logo {
+	max-width: 100px;
+}
+
+.color-white {
+	color: white;
+}
+
+.print.sidebar-mini.sidebar-collapse .content-wrapper, .print .content-wrapper
+	{
+	margin-left: 0 !important;
+}
+
+@media print {
+	.invoice-footer {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+	.invoice {
+		min-height: 990px;
+	}
+	body {
+		font-size: 12px;
+	}
+	.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th,
+		.table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th,
+		.table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+		padding: 0 8px;
+		vertical-align: middle !important;
+		line-height: 1.2;
+	}
+}
+
+table.table-report>tr>td {
+	padding: - 8px;
+}
+
+.print-header h2 {
+	font-family: "Khmer OS Muol Light", "Khmer OS Muol"
+}

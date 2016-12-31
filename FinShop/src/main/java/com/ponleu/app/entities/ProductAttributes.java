@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "prodcuts_attributes")
@@ -21,7 +20,7 @@ public class ProductAttributes {
 	@Column(name = "IS_SINGLE_PRICE")
 	private Boolean isSinglePrice;
 
-	@Transient
+	@Column(name = "UNIT_PRICE")
 	private BigDecimal unitPrice;
 
 	public ProductAttributeId getId() {

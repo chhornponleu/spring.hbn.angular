@@ -4,7 +4,7 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 	
 	<appender name="file" class="org.apache.log4j.FileAppender">
-	   <param name="file" value="d://logs/myapp.log"/>
+	   <param name="file" value="${catalina.base}/logs"/>
 	   <param name="immediateFlush" value="true"/>
 	   <param name="threshold" value="debug"/>
 	   <param name="append" value="false"/>
@@ -39,7 +39,7 @@
 		<level value="warn" />
 	</logger>
 	
-	<logger name="com.ponleu.shopcommerce">
+	<logger name="com.ponleu.app">
 		<level value="trace"/>
 	</logger>
 	
@@ -48,8 +48,8 @@
 	</logger>
 	
 	<root>
-		<priority value="info" />
-		<appender-ref ref="console" />
+		<priority value="error" />
+		<appender-ref ref="file,console" />
 	</root>
 
 </log4j:configuration>

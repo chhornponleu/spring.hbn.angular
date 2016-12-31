@@ -5,7 +5,7 @@
 	<artifactId>cnshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Shop Commerce</name>
+	<name>CN Shop</name>
 	<description>Shop Commerce</description>
 
 	<properties>

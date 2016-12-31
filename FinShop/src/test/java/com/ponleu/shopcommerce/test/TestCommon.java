@@ -12,7 +12,6 @@ public class TestCommon {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
 		System.out.println(encoder.encode("123"));
 		
-		System.out.println("hell".substring(0,11));
 		
 	}
 	

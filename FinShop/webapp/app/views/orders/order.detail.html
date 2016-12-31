@@ -48,7 +48,7 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<table class="table table-bordered">
+				<table class="table table-bordered table-report">
 					<colgroup>
 						<col width="5%">
 						<col width="20%">
@@ -61,12 +61,11 @@
 					<thead>
 						<tr>
 							<th class="text-center">ល.រ. <br>No</th>
-							<th class="text-center">រូបភាពផលិតផល <br>Product Image</th>
-							<th class="text-center">ផលិតផល <br>Product Name</th>
-							<th class="text-center">ធាតុ <br>Items</th>
-							<th class="text-center">បរិមាណ <br>Qty</th>
-							<th class="text-center">តម្លៃ​ឯកតា <br>Unit Price</th>
-							<th class="text-center">សរុប <br>Total</th>
+							<th class="text-center">រូបភាព <br>Photo</th>
+							<th class="text-center" colspan="2">បរិយាយ <br> Description</th>
+							<th class="text-center">ចំនួន <br> Quantity</th>
+							<th class="text-center">តម្លៃ​រាយ <br> Unit Price</th>
+							<th class="text-center">តម្លៃសរុប <br> Amount</th>
 						</tr>
 					</thead>
 					<tbody ng-repeat="od in order.orderDetails">
@@ -80,33 +79,33 @@
 						<tr ng-repeat="attr in od.attributes">
 							<td>{{attr.id.attribute.attributeName}}</td>
 							<td>{{attr.quantity | number}} <sup>{{attr.id.attribute.unit}}</sup></td>
-							<td class="text-right">$ {{attr.unitPrice | number}}</td>
-							<td class="text-right">$ {{attr.quantity * attr.unitPrice | number}}</td>
+							<td class="text-right"> {{attr.unitPrice | number}} $</td>
+							<td class="text-right"> {{attr.quantity * attr.unitPrice | number}} $</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="row">
-				<div class="col-xs-6"></div>
-				<div class="col-xs-6">
+				<div class="col-xs-7"></div>
+				<div class="col-xs-4">
 					<div class="table-responsive">
 						<table class="table">
 							<tbody>
 								<tr>
 									<th>តម្លៃ​សរុប Total Due</th>
-									<td>{{order.totalAmount}}</td>
+									<td class="text-right">{{order.totalAmount}} $</td>
 								</tr>
 								<tr>
 									<th>បញ្ចុះតំលៃ Discount</th>
-									<td>{{order.discountAmount}}</td>
+									<td class="text-right">{{order.discountAmount}} $</td>
 								</tr>
 								<tr>
 									<th>ប្រាក់កក់  Deposit</th>
-									<td>{{order.paidAmount}}</td>
+									<td class="text-right">{{order.paidAmount}} $</td>
 								</tr>
 								<tr>
 									<th>នៅខ្វះ  Balance Due</th>
-									<td>{{order.totalAmount - order.discountAmount - order.paidAmount}}</td>
+									<td class="text-right">{{order.totalAmount - order.discountAmount - order.paidAmount}} $</td>
 								</tr>
 							</tbody>
 						</table>
@@ -130,9 +129,9 @@
 				<div class="col-xs-12">
 					<p class="text-center">
 				
-					* មាសដែលលក់ជូនធានាគុណភាពទឹក​ ៧០% ទិញចូល​វិញ ៦៥% និង​ ទឹក ៧៥% ទិញចូលវិញ​ទឹក ៧០%។
+					មាសដែលលក់ជូនធានាគុណភាពទឹក​ ៧០% ទិញចូល​វិញ ៦៥% និង​ ទឹក ៧៥% ទិញចូលវិញ​ទឹក ៧០%។
 					<br>   
-					* ពេជ្រលក់វិញ​ទិញចូលតាមហាងឆេងអន្តរជាតិ​ ខាត ៥% និង សម្បកខាតឈ្នួល។
+					ពេជ្រលក់វិញ​ទិញចូលតាមហាងឆេងអន្តរជាតិ​ ខាត ៥% និង សម្បកខាតឈ្នួល។
 					
 					</p>
 				</div>

@@ -14,6 +14,7 @@
 		"customerInfo" : "ពត៌មានអតិថិជន"
 	},
 	"button": {
+		"add" : "បន្ថែម",
 		"addProduct" : "បន្ថែមផលិតផល",
 		"addToCart" : "ដាក់ក្នុងកន្ត្រក",
 		"back" : "ត្រឡប់ក្រោយ",
@@ -43,6 +44,7 @@
 		"female" : "ស្រី",
 		"id" : "លេខសម្គាល់",
 		"image" : "រូបភាព",
+		"item" : "មុខទំនិញ",
 		"khmerLanguage" : "ភាសាខ្មែរ",
 		"language" : "ភាសា",
 		"name" : "ឈ្មោះ",
@@ -56,11 +58,16 @@
 		"pickupDate" : "កាលបរិច្ឆេទយក",
 		"print" : "បោះពុម្ព",
 		"productName": "ឈ្មោះ​ផលិតផល",
+		"quantity" : "ចំនួន",
 		"returnedCustomer" : "អតិថិជនចាស់",
 		"saveAndNext" : "រក្សាទុកនិងបន្ទាប់​ទៀត",
 		"search" : "ការស្វែងរក",
+		"stock" : "ស្តុក",
+		"stockAmount" : "ចំនួនស្តុក",
+		"total" : "សរុប",
 		"totalAmount" : "តម្លៃ​សរុប",
 		"unit" : "ឯកតា",
+		"unitPrice" : "តម្លៃ​ឯកតា",
 		"username" : "ឈ្មោះ​អ្នកប្រើប្រាស់",
 		"view" : "បង្ហាញ"
 	},

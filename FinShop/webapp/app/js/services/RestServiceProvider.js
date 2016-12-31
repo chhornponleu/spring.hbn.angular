@@ -5,7 +5,7 @@
 			
 			this.$get = ['$resource', '$rootScope', function (resource, $rootScope) {
 
-				var baseUrl = '/cnshop/apis'
+				var baseUrl = window.URL + 'apis'
 				var defineResource = function (url, paramDefaults, actions) {
 	                return resource(baseUrl + url, paramDefaults, 
                 		angular.extend({ query : { method : 'GET', isArray:false}}, actions) 

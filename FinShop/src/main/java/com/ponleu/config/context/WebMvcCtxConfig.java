@@ -132,6 +132,7 @@ public class WebMvcCtxConfig extends WebMvcConfigurerAdapter {
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
 		converter.setObjectMapper(objectMapper());
 		converters.add(converter);
+		super.configureMessageConverters(converters); 
 	}
 	
 	@Bean

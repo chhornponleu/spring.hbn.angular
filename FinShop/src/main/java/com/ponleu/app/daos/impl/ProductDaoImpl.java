@@ -3,9 +3,7 @@ package com.ponleu.app.daos.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
+import javax.persistence.Query;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
@@ -79,5 +77,23 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
 		ctr.setMaxResults(pagingRequest.getPageSize());
 		ctr.addOrder(Order.desc("createdDate"));
 		return ctr.list();
+	}
+
+	@Override
+	public Integer decrement(Long productId, Double interval) {
+		String strQueryUpdate = "UPDATE Product p SET p.stockAmount = p.stockAmount - :interval WHERE p.id=:productId";
+		Query query = getSession().createQuery(strQueryUpdate);
+		query.setParameter("interval", interval);
+		query.setParameter("productId", productId);
+		return query.executeUpdate();
+	}
+	
+	@Override
+	public Integer increment(Long productId, Double interval) {
+		String strQueryUpdate = "UPDATE Product p SET p.stockAmount = p.stockAmount + :interval WHERE p.id=:productId";
+		Query query = getSession().createQuery(strQueryUpdate);
+		query.setParameter("interval", interval);
+		query.setParameter("productId", productId);
+		return query.executeUpdate();
 	}
 }

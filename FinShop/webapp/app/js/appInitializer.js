@@ -12,13 +12,16 @@
         
         
         // Language setup
+        var lang = localStorage.getItem('language');
+        if(lang == 'null' || lang == undefined) {
+			localStorage.setItem('language', 'kh');
+		}
         $translateProvider.useStaticFilesLoader({
             'prefix': 'app/i18n/locale-',
             'suffix': '.json'
         });
         $translateProvider.preferredLanguage('kh');
-        $translateProvider.useSanitizeValueStrategy('sanitize');
-		
+        //$translateProvider.useSanitizeValueStrategy('sanitize');
 	};
 	
 	app.ng.application.config(defineHeaders).run(function($log) {

@@ -10,7 +10,7 @@ var app = (function (modules) {
 	
 	modules.ng.config.value('pagingConfig', {
 		page : 1,
-		pageSize : 9,
+		pageSize : 10,
 		search : {}
 	});
 	

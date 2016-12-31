@@ -22,7 +22,7 @@ public class OrderApiController {
 	private OrderService orderService;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public RestfulResponse getSearch(@RequestBody Order order) {
+	public RestfulResponse save(@RequestBody Order order) {
 		boolean result = orderService.save(order);
 		RestfulResponse resp = new RestfulResponse();
 		resp.setBody(order.getId());

@@ -1,6 +1,7 @@
 package com.ponleu.app.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
@@ -58,6 +59,12 @@ public class Product implements Serializable {
 	@Column(name = "STATUS")
 	private String status;
 
+	@Column(name = "TOTAL_PRICE")
+	private BigDecimal totalPrice;
+
+	@Column(name = "STOCK_AMOUNT")
+	private Double stockAmount;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CATEGORY_ID")
 	@Cascade(CascadeType.PERSIST)
@@ -85,6 +92,22 @@ public class Product implements Serializable {
 		this.imageName = imageName;
 		this.category = category;
 		this.attributes = attributes;
+	}
+
+	public Double getStockAmount() {
+		return stockAmount;
+	}
+
+	public void setStockAmount(Double stockAmount) {
+		this.stockAmount = stockAmount;
+	}
+
+	public BigDecimal getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(BigDecimal totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	public Long getId() {

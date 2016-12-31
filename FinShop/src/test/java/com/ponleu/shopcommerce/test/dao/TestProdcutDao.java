@@ -35,4 +35,10 @@ public class TestProdcutDao extends AbstractContextTest {
 		Hibernate.initialize(pro.getAttributes());
 		printJson(pro);
 	}
+	
+	@Test
+	@Transactional(readOnly = false)
+	public void decrement() {
+		productDao.decrement(2L, 1D);
+	}
 }	

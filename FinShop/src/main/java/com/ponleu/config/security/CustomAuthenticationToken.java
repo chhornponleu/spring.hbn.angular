@@ -8,16 +8,16 @@ import org.springframework.security.core.GrantedAuthority;
 import com.ponleu.app.entities.User;
 import com.ponleu.app.entities.UserAccess;
 
-public class AuthenticationAdapter extends UsernamePasswordAuthenticationToken {
+public class CustomAuthenticationToken extends UsernamePasswordAuthenticationToken {
 	private static final long serialVersionUID = 1L;
 
 	private User user;
 
-	public AuthenticationAdapter(Object principal, Object credentials) {
+	public CustomAuthenticationToken(Object principal, Object credentials) {
 		super(principal, credentials);
 	}
 
-	public AuthenticationAdapter(Object principal, Object credentials,
+	public CustomAuthenticationToken(Object principal, Object credentials,
 			Collection<? extends GrantedAuthority> authorities, User user) {
 		super(principal, credentials, authorities);
 		this.user = user;

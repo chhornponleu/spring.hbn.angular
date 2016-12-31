@@ -49,13 +49,13 @@ public class JDBCAuthenticationProvider implements AuthenticationProvider {
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		authorities.add(new SimpleGrantedAuthority(user.getUserAccess().getRole()));
 
-		AuthenticationAdapter auth = new AuthenticationAdapter(username, password, authorities, user);
+		CustomAuthenticationToken auth = new CustomAuthenticationToken(username, password, authorities, user);
 
 		return auth;
 	}
 
 	@Override
 	public boolean supports(Class<? extends Object> clazz) {
-		return clazz.isAssignableFrom(AuthenticationAdapter.class);
+		return clazz.isAssignableFrom(CustomAuthenticationToken.class);
 	}
 }

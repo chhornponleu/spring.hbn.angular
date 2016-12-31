@@ -43,7 +43,7 @@ public class ProductApiController {
 	
 
 	@RequestMapping(method = RequestMethod.POST)
-	public RestfulResponse getPaging(@RequestBody Product product) {
+	public RestfulResponse save(@RequestBody Product product) {
 
 		productService.save(product);
 		String imageName = null;

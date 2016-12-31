@@ -1,6 +1,7 @@
 package com.ponleu.app.services.impl;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,10 +39,15 @@ public class ProductServiceImpl implements ProductService {
 		boolean result = true;
 
 		try {
+			BigDecimal totalPrice = BigDecimal.ZERO;
 			for (ProductAttributes pa : product.getAttributes()) {
 				pa.getId().setProduct(product);
+				
+				if(pa.getUnitPrice() != null && pa.getQuantity() != null) {
+					totalPrice = totalPrice.add(pa.getUnitPrice().multiply(BigDecimal.valueOf(pa.getQuantity()))); 					
+				}
 			}
-
+			product.setTotalPrice(totalPrice);
 			product.setCreatedDate(new Date());
 			product.setStatus(StatusEnum.STATUS_ACTIVE);
 			product.setCreatedBy(SecurityUtil.getCurrentUserName());

@@ -1,5 +1,5 @@
-*{
-	font-family: "Khmer S2", "Khmer OS"";
+body{
+	font-family: 'Hanuman', 'Khmer S2', 'Khmer OS', 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !important;
 }
 .main-header .logo {
 	border-right: none !important;

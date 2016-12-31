@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ponleu.app.commons.StatusEnum;
 import com.ponleu.app.daos.OrderDao;
+import com.ponleu.app.daos.ProductDao;
 import com.ponleu.app.dto.OrderPagingRequest;
 import com.ponleu.app.dto.OrderPagingResponse;
 import com.ponleu.app.entities.Order;
@@ -29,18 +30,28 @@ public class OrderServiceImpl implements OrderService {
 
 	@Inject
 	private OrderDao orderDao;
+	
+	@Inject
+	private ProductDao productDao;
 
 	@Override
 	@Transactional(readOnly = false)
 	public boolean save(Order order) {
 		boolean result = true;
 		try {
+			// save order and order details
 			for (OrderDetail od : order.getOrderDetails()) {
 				od.getId().setOrder(order);
 			}
 			order.setOrderDate(new Date());
 			order.setStatus(StatusEnum.STATUS_PENDING);
 			orderDao.save(order);
+			
+			// update stock
+			for(OrderDetail p: order.getOrderDetails()) {
+				productDao.decrement(p.getId().getProduct().getId(), Double.parseDouble("1")); 
+			}
+			
 		} catch (HibernateException | NullPointerException e) {
 			LOGGER.error("Error saving product : " + order.toString(), e);
 			result = false;
